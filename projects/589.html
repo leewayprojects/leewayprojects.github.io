@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plateau 589</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/script.js" defer></script>
+    <link rel="stylesheet" href="project-style.css" />
+      <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- Optional: Add more formats for better compatibility -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+</head>
+<body class="project-page">
+  <!-- Sidebar navigation -->
+  <aside class="sidebar">
+    <header>
+      <a href="/">
+      <img src="/assets/images/Logo_white_crop.png" alt="Leeway Projects" class="sidebar-logo"/>
+      </a>
+    </header>
+
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="/index.html">Projects</a></li>
+        <li><a href="/research.html">Research</a></li>
+        <!--<li><a href="pedagogy.html">Pedagogy</a></li>-->
+        <li><a href="/about.html">About me</a></li>
+      </ul>
+    </nav>
+
+    <footer class="sidebar-footer">
+      <a href="mailto:LeewayProjects@proton.me">Contact</a>
+      <p>© 2025 Leeway Projects — Designed and developed in-house</p>
+    </footer>
+  </aside>
+
+
+</head>
+<body>
+    <section class="grid">
+        <!-- Project Card 1-->
+        <div class="grid-item" onclick="openDrawer('plateau589')">
+            <img class="top-aligned" src="/assets/images/projects/589_binary-2000x1500.jpg" alt="Plateau 589 project preview" />
+            <div class="overlay">
+                <div class="project-page">
+                <h2>Plateau 589</h2>
+                <p><em>Throughout Plateau_589 we have dealt with art and culture not as a specialisation but as a social structure, 
+                    with artists not as specialists, but as people who have positioned themselves within these structures in 
+                    autonomous realms through which they have been granted and accept the permission to think because they identify 
+                    themselves as artists.</em></p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drawer -->
+    <div class="drawer-backdrop" onclick="closeDrawer()"></div>
+    <div class="drawer" id="project-drawer">
+        <div class="drawer-content">
+            <div class="drawer-header">
+                <h2 class="drawer-title" id="drawer-title">Project Title</h2>
+                <button class="close-btn" onclick="closeDrawer()">&times;</button>
+            </div>
+            
+            
+            
+            <div class="drawer-description" id="drawer-description">
+                <!-- Project description will be inserted here -->
+            </div>
+            
+            <div class="project-details">
+                <div class="detail-item">
+                    <div class="detail-label">Role</div>
+                    <div class="detail-value" id="project-role">Co-founder</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">When</div>
+                    <div class="detail-value" id="project-when">2007-8</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Duration</div>
+                    <div class="detail-value" id="project-duration">24 months</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Where</div>
+                    <div class="detail-value" id="project-where">Melbourne, Australia</div>
+                </div>
+            </div>
+            
+            <div class="tags" id="project-tags">
+                Socially Engaged Art, Public Art, Curation
+            </div>
+            
+            <div class="action-buttons">
+               <!--<a href="#" class="btn btn-primary" id="view-project-btn">View Project</a>-->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
