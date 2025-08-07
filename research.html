@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leeway Projects</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- Optional: Add more formats for better compatibility -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+</head>
+<body>
+  <!-- Sidebar navigation -->
+  <aside class="sidebar">
+    <header>
+      <a href="/">
+      <img src="assets/images/Logo_white_crop.png" alt="Leeway Projects" class="sidebar-logo"/>
+      </a>
+    </header>
+
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="index.html">Projects</a></li>
+        <li><a href="research.html">Research</a></li>
+        <!--<li><a href="#portfolio">Portfolio</a></li>-->
+        <!--<li><a href="pedagogy.html">Pedagogy</a></li>-->
+        <li><a href="about.html">About me</a></li>
+        <!--<li><a href="#steam">STEAM</a></li>-->
+      </ul>
+    </nav>
+
+    <footer class="sidebar-footer">
+      <a href="mailto:LeewayProjects@proton.me">Contact</a>
+      <p>© 2025 Leeway Projects — Designed and developed in-house</p>
+    </footer>
+  </aside>
+
+  <!-- Main content -->
+  <main>
+
+    <section id="profile"></section>
+      <div class="research-intro-hero">
+      <img src="/assets/images/ink.png" alt="Research ink"> 
+      </div>
+
+   
+      <div class="research-intro-section">    
+    <div class="research-intro-content">  
+  
+     <p>I have extensive experience in a range of research methodologies, which include <b>mixed-methods, practice-led</b>, and 
+    <b>research-as-practice</b> approaches. These methodologies allow me to seamlessly integrate <b>qualitative</b> and <b>quantitative</b> data, 
+    offering a comprehensive view of the research subject. Through <b>mixed-methods</b>, I am able to combine surveys, interviews, and 
+    ethnographic observation with data analysis to explore both the subjective and objective aspects of a topic. My <b>practice-led</b>
+    approach involves using my own creative practice—whether through sound art, composition, or performance—as a primary mode of 
+    inquiry, enabling new insights that emerge through hands-on exploration. Additionally, I employ <b>research-as-practice</b>, where 
+    research is embedded directly in the creative process, blurring the boundaries between practice and theory. These methodologies 
+    enable me to engage with research in dynamic and impactful ways, integrating theoretical frameworks with tangible artistic and 
+    scientific outcomes.</p>
+    </div>
+       </div>
+    </section>
+ 
+
+
+<style>
+  .container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .research-sidebar {
+    width: 200px;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .research-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .research-sidebar ul li {
+    margin: 15px 0;
+  }
+
+  .research-sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .research-sidebar ul li a:hover {
+    color: #007bff;
+  }
+
+
+  .content {
+    flex: 1;
+    margin-left: 40px;
+  }
+
+  .content section {
+    padding: 50px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Accordion Styles */
+  .accordion {
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .accordion-header {
+    background: #eee;
+    cursor: pointer;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  .accordion-content {
+    display: none;
+    padding: 15px;
+    background: #fafafa;
+  }
+
+  /* Responsive Sidebar */
+  .menu-toggle {
+    display: none;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .research-sidebar {
+      width: 100%;
+      position: relative;
+      top: 0;
+      box-shadow: none;
+      display: none;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+  }
+
+  /* Active link style */
+  .research-sidebar ul li a.active {
+    color: #007bff;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <button class="menu-toggle" id="menu-toggle">Menu</button>
+
+  <!-- Research Sidebar -->
+  <div class="research-sidebar" id="research-sidebar">
+    <ul>
+      <li><a href="#profile">Profile</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#current">Current</a></li>
+      <li><a href="#collabs">Collabs</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#upcoming">Upcoming</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+
+    <!-- RESEARCH AREAS -->
+    <section id="expertise">
+      <h2>Expertise</h2>
+      <div class="accordion" data-id="section1">
+        <div class="accordion-header">
+          <span>Sound, Technology, and Inclusive Practice</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="accordion-content">
+          <p>My work traces the intersections of sound, technology, and inclusive practice, guided by a transfeminist 
+            lens that foregrounds experimental music, gender and queer theory, and collective approaches to innovation. 
+            I am particularly interested in the social impact of research and innovation projects, working to embed gender 
+            equality, LGBTQIA+ inclusion, and community-centred methodologies into the development of new technologies and 
+            educational practices. My work draws on interdisciplinary methods across sound arts, critical research, and STEAM 
+            education, with a commitment to fostering accessible, ethical, and socially engaged outcomes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!--  CURRENT PROJECTS -->
+    <section id="current">
+      <h2>Current</h2>
+                <div class="accordion" data-id="section2">
+            <div class="accordion-header">
+              <span>Code Red</span>
+              <span class="icon">+</span>
+            </div>
+            <div class="accordion-content">
+              <p><em>Mapping the Entangled Rise of Anti-Gender Mobilisations and Democratic Backsliding Through Transfeminist STEAM Praxis</em></p>
+                <br>
+                <p>This project investigates the co-emergence of anti-gender and anti-feminist mobilisations alongside the erosion of 
+                democratic norms across Europe and the Americas. Adopting a transfeminist, STEAM-based approach, it fuses data 
+                science, digital arts, political theory, and feminist historiography to systematically uncover and historicise 
+                how anti-gender politics are mobilised as part of broader de-democratisation agendas. Using interdisciplinary 
+                and comparative case studies, the project offers both scholarly analysis and public-facing tools that visualise 
+                these entanglements, offering new methods for resisting reactionary narratives and imagining transfeminist futures.
+              </p>
+            </div>
+          </div>
+    </section>
+
+    
+    <section id="collabs">
+      <h2>Collabs</h2>
+      <div class="accordion" data-id="section1">
+        <div class="accordion-header">
+          <span>A Comprehensive Guide to Incorporating Gender Criteria in Horizon Europe Proposals</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="accordion-content">
+          <p>Palaiologk, A., & Lee Ingleton. 2025. Future Needs.</p>
+          <br>
+      <p><em>Including Gender Criteria in Horizon Europe Proposals</em> offers a practical yet reflective guide for weaving gender 
+            sensitivity into the fabric of research and innovation. Drawing from EU policy frameworks and grounded in the 
+            lived realities of unequal access to resources, the guide reframes gender not as a box to tick, but as a lens to 
+            sharpen ethical, impactful inquiry. It explores how gender dynamics shape everything from research questions and 
+            methodologies to budgeting and dissemination, encouraging proposers to think beyond binaries and embrace 
+            intersectional approaches. Rooted in a vision of inclusive, socially responsive science, the guide invites 
+            applicants to design projects where gender equality is not an add-on, but a catalyst for relevance, excellence, 
+            and change.</p>
+        </div>
+      </div>
+
+            <div class="accordion" data-id="section1">
+        <div class="accordion-header">
+          <span>SGFA Zine</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="accordion-content">
+          <p>Ingleton, H., Angus Carlyle & Cathy Lane. 2016. SGFA Zine CRiSAP. CC BY NC ND</p>
+          <br>
+      <p>The <a href="https://ualresearchonline.arts.ac.uk/id/eprint/11501/"><em>SGFA zine</em></a> celebrates a growing network of people working within, through and beyond the fields of sound, 
+        feminism and gender who have contributed to the SGFA events of 2012 and 2014. Sound::Gender::Feminism::Activism was initially 
+        established as a research event focusing on the role of gender in sound-based arts and experimental musics, following on 
+        from the Her Noise: Feminisms and the Sonic symposium at London’s Tate Modern in May 2012. The aim was, and still is, to 
+        develop and expand upon dialogues and discourses related to feminism and sound as well as to form an international network 
+        of researchers, artists and practitioners working in these areas.</p>
+        <br>
+        <p>Contributions by; Alison Ballance, Amy Cunningham, Anat Ben-David, Andra McCartney & Sandra Gabriele, Ann Antidote, 
+          Annie Goh, Bonnie Jones, Christopher DeLaurenti, Claudia Firth & Lucia Farinati, Claudia Wegener, Freya Johnson Ross, 
+          Gayathri Khemadasa, INVASORIX, Iris Garrelfs, Jane Dickson, Johnny Pavlatos, Kersten Schroedinger, Laura Seddon, 
+          Marie Thompson, Mark Harris, Melanie Chilianis, Mindy Abovitz, Norah Lorway, Philip Cornett, Sarah Hardie, Sharon Gal, 
+          Siri Landgren, Tara Rodgers, Tripta Chandola, Victoria Gray and Virginia Kennard & Emi Pogoni.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- PAST PUBLICATIONS -->
+    <section id="publications">
+      <h2>Publications</h2>
+            <div class="accordion" data-id="section1">
+        <div class="accordion-header">
+          <span>Moodle User Manual for the EqPay4all Virtual Think Tank</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="accordion-content">
+          <br>
+          <p>This comprehensive guide supports users of the <b>EqPay4all Virtual Think Tank</b> platform, designed to promote gender-equal 
+            pay and inclusive employment practices across Europe. Developed as part of an Erasmus+ project, the manual offers 
+            step-by-step instructions for navigating the Moodle-based learning environment, participating in activities, 
+            accessing resources, and contributing to discussions. It is tailored for educators, mentors, and learners involved 
+            in equality-driven initiatives and has been translated into five languages to ensure broad accessibility and impact.</p>
+            <br>
+            <p>Published by<em>EqPay4all</em>, 2025</p>
+            <br>
+            <a href="https://www.eqpayforall.eu/dist/manual/EqPay4all%20Moodle%20User%20Manual_EN.pdf" target="blank">Download English,</a>
+            <a href="https://www.eqpayforall.eu/dist/manual/EqPay4all%20Moodle%20User%20Manual_EL.pdf" target="blank">Greek,</a>
+            <a href="https://www.eqpayforall.eu/dist/manual/EqPay4all%20Moodle%20User%20Manual_DE.pdf" target="blank">German,</a>
+            <a href="https://www.eqpayforall.eu/dist/manual/EqPay4all%20Moodle%20User%20Manual_LV.pdf" target="blank">Latvian,</a>
+            <a href="https://www.eqpayforall.eu/dist/manual/EqPay4all%20Moodle%20User%20Manual_PL.pdf" target="blank">Polish</a>
+        </div>
+      </div>
+
+
+      <div class="accordion" data-id="section1">
+        <div class="accordion-header">
+          <span>Dancing with Toots Benedicta</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="accordion-content">
+          <p><em>DYCP Arts Council England, 2022</em></p>
+          <br>
+          <p><a href="https://leeingleton.bandcamp.com/album/dancing-with-toots-benedicta"><em>Dancing With Toots Benedicta</em></a> is an experimental sound work that explores themes of longing, belonging, 
+            and dispossession through the lens of personal and cultural memory. Inspired by the life of my maternal grandmother, 
+            Toots Benedicta, who emigrated from Sri Lanka to Australia in the 1950s, the piece weaves together sonic fragments to 
+            create a meditative narrative of love, loss, and ancestral connection.</p>
+            <br>
+            <p>The project employs a practice-led research approach, combining ethnographic exploration with experimental sound 
+              composition. It utilizes archival materials, field recordings, and digital manipulation to construct a sonic tapestry 
+              that reflects the complexities of diaspora and memory.</p> 
+        </div>
+      </div>
+
+      <div class="accordion" data-id="section1">
+        <div class="accordion-header">
+          <span>Composing Paradoxes</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="accordion-content">
+          <p><em>Diss, City St George's, University of London, 2015</em></p>
+          <br>
+          <p>The doctoral research, <a href="https://openaccess.city.ac.uk/id/eprint/17510/"><em>Composing Paradoxes: 
+            Feminist Process in Sound Arts and Experimental Musics</em></a> explores how socio-political differences and lived experiences of gender, sexuality, race and ethnicity
+         are constructed, negotiated, and performed within experimental music and sound art practices. Drawing on sound studies, queer-feminist and 
+            critical race theory, the research critically engages with the social and material conditions that shape sonic production. Combining ethnographic 
+            methods, archival research, and practice-led inquiry, the thesis highlights how marginalised identities challenge 
+            dominant narratives in experimental music. The project contributes new frameworks for understanding listening 
+            and performance, supporting greater inclusion within sound practices.</p>
+            <br>
+            <p>Widely accessed and cited, the thesis has influenced curatorial, educational, and scholarly work across sound studies and gender research.
+              <br>
+              <a href="https://openaccess.city.ac.uk/cgi/stats/report/eprint/17510?from=20150630&to=20250428&date_resolution=year">view download statistics</a></p>
+        </div>
+      </div>
+
+      <div class="accordion" data-id="section2">
+        <div class="accordion-header">
+          <span>Recalibrating Fundamentals of Discipline and Desire Through the Automatic Music Tent</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="accordion-content">
+          <p><em>Contemporary Music Review, Vol. 35, Issue 1, 2016</em></p>
+          <br>
+          <p><a href="https://www.tandfonline.com/doi/full/10.1080/07494467.2016.1176768">Read the article</a></p>
+          <br>
+          <p>This article investigates how gendered, racialised, and sexualised norms are embedded within foundational 
+            audio-technical concepts like pitch and timbre. Through a queer-feminist lens, it critiques the historical 
+            alignment of sonic purity with disembodiment and whiteness. The study culminates in an analysis of 
+            <em>Reverse Karaoke: Automatic Music Tent</em> (Gordon & Koether, 2005) as a performative site that reclaims 
+            sonic agency and destabilises dominant listening practices.</p>
+            <br>
+            <p>Employing critical historiography, performance analysis, and queer-feminist sound theory, the article contributes to 
+            ongoing debates in gender, music technology, and sound studies. <em>Recalibrating Fundamentals of Discipline and Desire 
+            Through the Automatic Music Tent</em> has been cited across key works addressing gender, technology, and sound, 
+            including by <a href="https://books.openedition.org/enseditions/15432">Born & Devine</a> (2020), <a href="https://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1377483&dswid=2911">Frid</a> (2019), 
+            <a href="https://direct.mit.edu/books/oa-monograph/5351/Sex-SoundsVectors-of-Difference-in-Electronic">Sofer</a> (2017; 2022), 
+            Bosma (2016), Thompson (2016), and Wetmore (2022), reflecting its influence on feminist, queer, and inclusive 
+            approaches to music and sonic practice.</p>
+        </div>
+      </div>
+
+      <div class="accordion" data-id="section2">
+        <div class="accordion-header">
+          <span>Sounding Out Parameters of Intimate Publics</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="accordion-content">
+          <p><em> Women and Music: A Journal of Gender and Culture, Vol. 20, 2016, pp.77-87</em></p>
+          <br>
+          <p><a href="https://muse.jhu.edu/article/631944">Read the article</a></p>
+          <br>
+       
+      <p><em>Sounding Out Parameters of Intimate Publics</em> explores archival practices as forms of resistance, 
+            centring the <a href="https://hernoise.org/overview/her-noise-introduction/"><em>Her Noise Archive</em></a> by 
+            Neset & Dzuverovic and Sonia Boyce's <a href="https://www.npg.org.uk/whatson/exhibitions/2007/devotional/">
+            <em>Devotional Series</em></a> as queer-feminist gestures within experimental music and sound art. 
+            Guided by Lauren Berlant's notion of the “intimate public,” the article listens for how non-dominant sonic practices 
+            conjure alternative modes of belonging, whilst introducing the “juxtapolitical”, a stance that resists normative 
+            power while remaining deeply entangled within the political. Through the voices of Berlant, Stuart Hall, and 
+            Paul Gilroy, the article weaves queer-feminist historiography, critical race and cultural theory, and archival 
+            analysis to consider how sound, performance, and listening become acts of witnessing and world-making.</p>  
+        </div>
+      </div>
+    </section>
+
+
+
+      <!-- UPCOMONG RESEARCH -->
+    <section id="upcoming">
+      <h2>Upcoming</h2>
+      <div class="accordion" data-id="section1">
+        <div class="accordion-header">
+          <span>Octophonia</span>
+          <span class="icon">+</span>
+        </div>
+            <div class="accordion-content">
+              <p>The OCTOPHONIA Curriculum is a multidisciplinary STEAM programme that blends sound arts, technology, engineering, 
+                and ecology, focusing on multi-channel and immersive audio experiences. It explores AI-driven soundscapes, 
+                algorithmic composition, and interactive audio systems, while also integrating concepts from acoustic ecology, 
+                eco-acoustics, and environmental sound storytelling. The curriculum covers human-computer interaction through 
+                motion-sensitive sound design and biofeedback, and delves into spatial audio for mixed reality (XR) environments, 
+                including VR and AR. Designed for young adults, it provides hands-on workshops and projects, offering a 
+                comprehensive exploration of the creative, technical, and ecological aspects of immersive sound.</p>
+            </div>
+          </div>
+
+      <div class="accordion" data-id="section2">
+        <div class="accordion-header">
+          <span>Freq Club</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="accordion-content">
+          <p>Freq Club adopts a STEAM-based approach, with an emphasis on practical, hands-on experimentation and collaboration. 
+            At the core of Freq Club is the investigation of how various frequencies—whether generated through traditional 
+            instruments, voice, or digital platforms like SuperCollider and Max/MSP—interact with human perception and the 
+            physical environment. The project explores key concepts in acoustics and psychoacoustics, including frequency ranges, 
+            harmonic relationships, auditory masking, and sound localization. By using these scientific principles, the research 
+            informs the creation of new sound compositions and performance techniques that engage listeners both scientifically 
+            and emotionally.</p>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</div>
+</main>
+
+<script>
+// Active link highlighting
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.sidebar ul li a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 50;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Menu toggle for mobile
+const menuToggle = document.getElementById('menu-toggle');
+const sidebar = document.getElementById('sidebar');
+
+menuToggle.addEventListener('click', () => {
+  sidebar.style.display = sidebar.style.display === 'block' ? 'none' : 'block';
+});
+
+// Accordion functionality
+const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+accordionHeaders.forEach(header => {
+  header.addEventListener('click', () => {
+    const content = header.nextElementSibling;
+    const icon = header.querySelector('.icon');
+    if (content.style.display === 'block') {
+      content.style.display = 'none';
+      icon.textContent = '+';
+    } else {
+      content.style.display = 'block';
+      icon.textContent = '-';
+    }
+  });
+});
+</script>    
+  
+</body>
+</html>
