@@ -506,3 +506,14 @@ main {
     }
 }
 
+/* readmore button */
+body {
+    font-family: var(--font-primary);
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
