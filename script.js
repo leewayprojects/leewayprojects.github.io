@@ -159,7 +159,7 @@ const projectData = {
         when: '2014-17',
         where: '-',
         tags: ['Her Noise', 'Feminist sound art', 'Experimental Music', 'Tate Modern'],
-        projectUrl: 'https://feministfrequencies.org/'
+        projectUrl: ''
     },
     'fractured': {
         title: 'Fractured Intimacies',
@@ -302,7 +302,7 @@ const projectData = {
         when: '2017-22',
         where: 'Athens, Greece',
         tags: ['AveloSpace', 'LGBTQIA+', 'Social Center', 'Athens'],
-        projectUrl: 'http://youtu.be/zpTwKqN-NjQ'
+        projectUrl: ''
     },
 };
 
