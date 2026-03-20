@@ -1,492 +1,632 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leeway Projects - Platforms</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
     <style>
-        .container {
-            display: flex;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+      .container {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Renamed from .research-sidebar */
+      .platform-sidebar {
+        width: 200px;
+        position: sticky;
+        top: 20px;
+        align-self: flex-start;
+        background-color: #f7f7f7;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .platform-sidebar ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .platform-sidebar ul li {
+        margin: 15px 0;
+      }
+
+      .platform-sidebar ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      .platform-sidebar ul li a:hover {
+        color: #007bff;
+      }
+
+      .platform-sidebar ul li a.active {
+        color: #007bff;
+      }
+
+      .content {
+        flex: 1;
+        margin-left: 40px;
+      }
+
+      .content section {
+        padding: 50px 0;
+        border-bottom: 1px solid #ddd;
+      }
+
+      /* Introductory styles  */
+      .platform-intro-hero {
+        height: 200px;
+        background-color: #f0f0f0;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .platform-intro-hero h1 {
+        font-size: 2em;
+        text-align: center;
+      }
+      .platform-intro-section {
+        padding: 10px 20px 20px;
+        border-bottom: 1px solid #ddd;
+      }
+      .platform-intro-content {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Platform Accordion Styles */
+      .platform-accordion {
+        width: 100%;
+        max-width: 800px;
+        margin-left:0px;
+        box-sizing: border-box;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .platform-accordion-header {
+        background: #ed1ab8;
+        cursor: pointer;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+      }
+
+      .platform-accordion-content {
+        display: none;
+        padding: 15px;
+        background: #fafafa;
+      }
+
+      /* Responsive Sidebar */
+      .menu-toggle {
+        display: none;
+        background-color: #3f8dae;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-family: "Inter", sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: left;
+        cursor: pointer;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .platform-accordion {
+        max-width: 100%;
+        margin: 12px 0;
+        padding: 0;
+    }
+
+    .platform-accordion-header {
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    .content {
+        margin-left: 0;  /* ← this is likely the culprit */
+    }
+
+
+        .platform-sidebar {
+          /* Renamed */
+          width: 100%;
+          position: relative;
+          top: 0;
+          box-shadow: none;
+          display: none;
         }
 
-        /* Renamed from .research-sidebar */
-        .platform-sidebar { 
-            width: 200px;
-            position: sticky;
-            top: 20px;
-            align-self: flex-start;
-            background-color: #f7f7f7;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .platform-sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .platform-sidebar ul li {
-            margin: 15px 0;
-        }
-
-        .platform-sidebar ul li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .platform-sidebar ul li a:hover {
-            color: #007bff;
-        }
-
-        .platform-sidebar ul li a.active {
-            color: #007bff;
-        }
-
-        .content {
-            flex: 1;
-            margin-left: 40px;
-        }
-
-        .content section {
-            padding: 50px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        /* Introductory styles (Renamed from research-intro-...) */
-        .platform-intro-hero {
-            height: 200px; 
-            background-color: #f0f0f0;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .platform-intro-hero h1 {
-            font-size: 2em;
-        }
-        .platform-intro-section {
-            padding: 20px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        .platform-intro-content {
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Platform Accordion Styles */
-        .platform-accordion {
-            margin: 10px 0;
-            border: 1px solid #ffffff;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-
-        .platform-accordion-header {
-            background: #ed1ab8;
-            cursor: pointer;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        .platform-accordion-content {
-            display: none;
-            padding: 15px;
-            background: #fafafa;
-        }
-
-        /* Responsive Sidebar */
         .menu-toggle {
-            display: none;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            border-radius: 5px;
+          display: block;
         }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .platform-sidebar { /* Renamed */
-                width: 100%;
-                position: relative;
-                top: 0;
-                box-shadow: none;
-                display: none; 
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <aside class="sidebar">
-        <header>
-            <a href="/">
-            <img src="assets/images/Logo_white_crop.png" alt="Leeway Projects" class="sidebar-logo"/>
-            </a>
-        </header>
-        <nav aria-label="Primary">
-            <ul class="nav">
-                <li><a href="index.html">Projects</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li class="active"><a href="platforms.html">Platforms</a></li> 
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
-        <footer class="sidebar-footer">
-            <a href="mailto:LeewayProjects@proton.me">Contact</a>
-            <p>© 2025 Leeway Projects — Designed and developed in-house</p>
-        </footer>
+      <header>
+        <a href="/">
+          <img
+            src="assets/images/Logo_white_crop.png"
+            alt="Leeway Projects"
+            class="sidebar-logo"
+          />
+        </a>
+      </header>
+      <nav aria-label="Primary">
+        <ul class="nav">
+          <li><a href="index.html">Projects</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li class="active"><a href="platforms.html">Platforms</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <footer class="sidebar-footer">
+        <a href="mailto:LeewayProjects@proton.me">Contact</a>
+        <p>© 2025 Leeway Projects — Designed and developed in-house</p>
+      </footer>
     </aside>
 
     <main>
-        
-        <section id="introduction">
-            <div class="platform-intro-hero">
-                <h1>Full-Spectrum Platform Management</h1> 
-            </div>
+      <section id="introduction">
+        <div class="platform-intro-hero">
+          <h1>Full-Spectrum Platform Management</h1>
+        </div>
 
-            <div class="platform-intro-section">    
-                <div class="platform-intro-content">  
-                    <p>I specialise in the comprehensive design, development, and sustained management of digital platforms for 
-                        organisations and individuals driving social and cultural impact. My expertise ensures your online presence 
-                        is <b>robust, accessible, and strategically aligned</b> with your mission. I provide full-spectrum platform 
-                        leadership, from front-end development (<b>HTML/CSS/JS</b>) and content strategy to managing complex back-end 
-                        ecosystems (<b>Cargo.Site, WordPress, CiviCRM, AEM, Moodle LMS</b>). My commitment is to deliver technical fluency 
-                        and reliable partnership, supporting long-term digital growth across diverse technology stacks.</p>
-                </div>
-            </div>
-        </section>
+        <div class="platform-intro-section">
+          <div class="platform-intro-content">
+            <p>
+              I specialise in the comprehensive design, development, and
+              sustained management of digital platforms for organisations and
+              individuals driving social and cultural impact. My expertise
+              ensures your online presence is
+              <b>robust, accessible, and strategically aligned</b> with your
+              mission. I provide full-spectrum platform leadership, from
+              front-end development (<b>HTML/CSS/JS</b>) and content strategy to
+              managing complex back-end ecosystems (<b
+                >Cargo.Site, WordPress, CiviCRM, AEM, Moodle LMS</b
+              >). My commitment is to deliver technical fluency and reliable
+              partnership, supporting long-term digital growth across diverse
+              technology stacks.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <div class="container">
-            <button class="menu-toggle" id="menu-toggle">Platforms Menu</button>
+      <div class="container">
+        <button class="menu-toggle" id="menu-toggle">Platforms Menu</button>
 
-            <div class="platform-sidebar" id="platform-sidebar">
-                <h2>Platforms</h2>
-                <ul>
-                    <li><a href="#hernoise">Her Noise</a></li>
-                    <li><a href="#ainbailey">Ain Bailey</a></li>
-                    <li><a href="#equalpay4all">EqualPay4all</a></li>
-                    <li><a href="#transperfect">Dentsply Sirona</a></li>
-                    <li><a href="#wrc">WRC</a></li>
-                    <li><a href="#avelospace">AveloSpace</a></li>
-                    <li><a href="#genderpanic">Gender Panic</a></li>
-                    <li><a href="#feministfrequencies">Feminist Frequencies</a></li>
-                    <li><a href="#ankaaproject">Ankaa Project</a></li>
-                    <li><a href="#rainbowspectrum">Rainbow Spectrum</a></li>
-                    <li><a href="#feministiqa">Feministiqa</a></li>
-                    <li><a href="#electra">Electra</a></li>
-                    <li><a href="#leewayprojects">Leeway Projects</a></li>
-                </ul>
-            </div>
+        <div class="platform-sidebar" id="platform-sidebar">
+          <h2>Platforms</h2>
+          <ul>
+            <li><a href="#hernoise">Her Noise</a></li>
+            <li><a href="#ainbailey">Ain Bailey</a></li>
+            <li><a href="#equalpay4all">EqualPay4all</a></li>
+            <li><a href="#transperfect">Dentsply Sirona</a></li>
+            <li><a href="#wrc">WRC</a></li>
+            <li><a href="#avelospace">AveloSpace</a></li>
+            <li><a href="#genderpanic">Gender Panic</a></li>
+            <li><a href="#feministfrequencies">Feminist Frequencies</a></li>
+            <li><a href="#ankaaproject">Ankaa Project</a></li>
+            <li><a href="#rainbowspectrum">Rainbow Spectrum</a></li>
+            <li><a href="#feministiqa">Feministiqa</a></li>
+            <li><a href="#electra">Electra</a></li>
+            <li><a href="#leewayprojects">Leeway Projects</a></li>
+          </ul>
+        </div>
 
-            <div class="content">
+        <div class="content">
           <!-- 1 -->
-                <section id="hernoise">  
-                    <div class="platform-accordion">
-                       <div class="platform-accordion-header">
-                            <span>hernoise.org — Long-Term Platform Management</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>URL:</b> <a href="https://hernoise.org/" target="_blank">https://hernoise.org/</a></p>
-                            <p><b>Role/Scope:</b> Platform Lead, Content Strategy, Full Platform Management - Long-term platform stewardship for a major sound-art archive.
-                               Led major site re-design in 2023. 
-                              Managed high-traffic platform serving **90,000+ visitors**.</p>
-                            <p><b>Tech Stack:</b> WordPress</p>
-                            <p><b>Timeline:</b> 2012–Present – long-term platform manager</p>
-                        </div>
-                    </div>
-                </section>
+          <section id="hernoise">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>hernoise.org — Long-Term Platform Management</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>URL:</b>
+                  <a href="https://hernoise.org/" target="_blank"
+                    >https://hernoise.org/</a
+                  >
+                </p>
+                <p>
+                  <b>Role/Scope:</b> Platform Lead, Content Strategy, Full
+                  Platform Management - Long-term platform stewardship for a
+                  major sound-art archive. Led major site re-design in 2023.
+                  Managed high-traffic platform serving **90,000+ visitors**.
+                </p>
+                <p><b>Tech Stack:</b> WordPress</p>
+                <p>
+                  <b>Timeline:</b> 2012–Present – long-term platform manager
+                </p>
+              </div>
+            </div>
+          </section>
 
-
-         <!-- 2 -->
-                <section id="ainbailey">
-                    <div class="platform-accordion">
-                        <div class="platform-accordion-header">
-                            <span>AinBailey — New Website Build</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>URL:</b> <a href="https://ainbailey.com" target="_blank">https://ainbailey.com</a></p>
-                            <p><b>Role/Scope:</b> Full build of new portfolio and artist website. New website build on Cargo.site, focused on visual coherence, intuitive navigation, and long-term content maintainability.</p>
-                            <p><b>Tech Stack:</b> Cargo.site</p>
-                            <p><b>Timeline:</b> 2025–2026</p>
-                        </div>
-                    </div>
-                </section>
+          <!-- 2 -->
+          <section id="ainbailey">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>AinBailey — New Website Build</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>URL:</b>
+                  <a href="https://ainbailey.com" target="_blank"
+                    >https://ainbailey.com</a
+                  >
+                </p>
+                <p>
+                  <b>Role/Scope:</b> Full build of new portfolio and artist
+                  website. New website build on Cargo.site, focused on visual
+                  coherence, intuitive navigation, and long-term content
+                  maintainability.
+                </p>
+                <p><b>Tech Stack:</b> Cargo.site</p>
+                <p><b>Timeline:</b> 2025–2026</p>
+              </div>
+            </div>
+          </section>
 
           <!-- 3 -->
-                <section id="equalpay4all">
-                    <div class="platform-accordion">
-    <div class="platform-accordion-header">
-                            <span>EqualPay4all — Digital Lead & Multi-Platform Build</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>URL:</b> <a href="https://www.eqpayforall.eu/" target="_blank">Main Site (HTML/CSS/JS)</a> & <a href="https://vtt.eqpayforall.eu/" target="_blank">VTT (Moodle LMS)</a></p>
-                            <p><b>Role/Scope:</b> Digital Lead, Development, and full build of both the main informational site and the learning platform.
-                            Responsible for UX, build, QA.</p>
-                            <p><b>Tech Stack:</b> HTML/CSS/JS + Moodle LMS</p>
-                            <p><b>Timeline:</b> 2025</p>
-                        </div>
-                    </div>
-                </section>  
-                
-            <!-- 4 -->
-                <section id="transperfect">
-                   <div class="platform-accordion">
-    <div class="platform-accordion-header">
-                            <span>TransPerfect (DentsplySirona) — Enterprise Content Editor</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>Role/Scope:</b> Executed enterprise-scale content publishing in Adobe Experience Manager, ensuring workflow compliance and global brand consistency as Content Editor for DentsplySirona projects managed by TransPerfect.</p>
-                            <p><b>Tech Stack:</b> Adobe Experience Manager (AEM)</p>
-                            <p><b>Timeline:</b> 2023–2024</p>
-                        </div>
-                    </div>
-                </section>
-
-
-           <!-- 5 -->
-                <section id="wrc">
-                    <div class="platform-accordion">
-    <div class="platform-accordion-header">
-                            <span>Womens Resource Center (WRC) — Digital Officer</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>URL:</b> <a href="https://www.wrc.org.uk/" target="_blank">https://www.wrc.org.uk/</a></p>
-                            <p><b>Role/Scope:</b> Supported a major digital transformation through accessibility-led improvements, CRM oversight, and structured content operations.</p>
-                            <p><b>Tech Stack:</b> WordPress & CiviCRM</p>
-                            <p><b>Timeline:</b> 2016</p>
-                        </div>
-                    </div>
-                </section>
-
-            <!-- 6 -->
-                <section id="avelospace">
-                    <div class="platform-accordion">
-                        <div class="platform-accordion-header">
-                            <span>avelospace.net — Social Hub / Living Lab</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>Role/Scope:</b> Managed a community-focused “living lab” platform, maintaining content relevance, structural clarity, and platform adaptability.</p>
-                            <p><b>Tech Stack:</b> WordPress</p>
-                            <p><b>Timeline:</b> 2018–2024</p>
-                        </div>
-                    </div>
-                </section>
-
-           <!-- 7 -->
-                <section id="genderpanic">
-                    <div class="platform-accordion">
-                        <div class="platform-accordion-header">
-                            <span>genderpanic.com — E-commerce & Art Sales Platform</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>Role/Scope:</b> Managed an artist-led e-commerce and content platform, including WooCommerce setup, product architecture, and ongoing UX optimization.</p>
-                            <p><b>Tech Stack:</b> WordPress (WooCommerce)</p>
-                            <p><b>Timeline:</b> 2018–2024</p>
-                        </div>
-                    </div>
-                </section>
-
-
-
-              <!-- 8 -->  
-                <section id="feministfrequencies">
-                    <div class="platform-accordion">
-                        <div class="platform-accordion-header">
-                            <span>feministfrequencies.org — Digital Book Platform</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>Role/Scope:</b> Managed a long-form digital book platform, overseeing UX, content workflows, and multi-year platform stability</p>
-                            <p><b>Tech Stack:</b> WordPress</p>
-                            <p><b>Timeline:</b> 2014–2024</p>
-                        </div>
-                    </div>
-                </section>
-
-
-
-                <!-- 9 -->
-                <section id="ankaaproject">
-                    <div class="platform-accordion">
-                        <div class="platform-accordion-header">
-                            <span>AnkaaProject — Site Redesign</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>URL:</b> <a href="https://www.ankaaproject.org/" target="_blank">https://www.ankaaproject.org/</a></p>
-                            <p><b>Role/Scope:</b> Led a site redesign on Wix, optimizing structure, visuals, and content workflows to strengthen digital presence.</p>
-                            <p><b>Tech Stack:</b> WIX</p>
-                            <p><b>Timeline:</b> 2025/26</p>
-                        </div>
-                    </div>
-                </section>
-
-
-                <!-- 10 -->
-                <section id="rainbowspectrum">
-                    <div class="platform-accordion">
-                        <div class="platform-accordion-header">
-                            <span>Rainbow Spectrum — New Project Management</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>URL:</b> <a href="https://rainbowspectrum.org/" target="_blank">https://rainbowspectrum.org/</a></p>
-                            <p><b>Role/Scope:</b> Architecting a new digital ecosystem for a consultancy, including design system creation, technical build, and ongoing content operations.</p>
-                            <p><b>Tech Stack:</b> New Project</p>
-                            <p><b>Timeline:</b> 2026</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 11 -->
-                <section id="feministiqa">
-                    <div class="platform-accordion">
-                        <div class="platform-accordion-header">
-                            <span>Feministiqa — First Site Edition</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>URL:</b> <a href="https://feministiqa.net/" target="_blank">https://feministiqa.net/</a></p>
-                            <p><b>Role/Scope:</b> Designed and delivered the first edition of the site, establishing foundational design, navigation, and content workflows</p>
-                            <p><b>Tech Stack:</b> WordPress Builder</p>
-                            <p><b>Timeline:</b> 2017</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 12 -->
-                <section id="electra">
-                    <div class="platform-accordion">
-                        <div class="platform-accordion-header">
-                            <span>Electra Productions — Web Editor</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>URL:</b> <a href="https://www.electra-productions.com/" target="_blank">https://www.electra-productions.com/</a></p>
-                            <p><b>Role/Scope:</b> Front-end and content development across a bespoke HTML/CSS/JS platform, ensuring robust visual and editorial standards.</p>
-                            <p><b>Tech Stack:</b> HTML/CSS/JS</p>
-                            <p><b>Timeline:</b> 2010–2014</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- 13 -->
-                <section id="leewayprojects">
-                    <div class="platform-accordion">
-                        <div class="platform-accordion-header">
-                            <span>LeewayProjects — Full Management</span>
-                            <span class="icon">+</span>
-                        </div>
-                        <div class="platform-accordion-content">
-                            <p><b>URL:</b> <a href="https://leewayprojects.github.io/" target="_blank">https://leewayprojects.github.io/</a></p>
-                            <p><b>Role/Scope:</b> Owner, designer, developer, maintenance, and full management.</p>
-                            <p><b>Tech Stack:</b> HTML/CSS/JS</p>
-                            <p><b>Timeline:</b> Full lifecycle management of a personal portfolio site, including design, development, maintenance, and ongoing platform governance.</p>
-                        </div>
-                    </div>
-                </section>
-                
+          <section id="equalpay4all">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>EqualPay4all — Digital Lead & Multi-Platform Build</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>URL:</b>
+                  <a href="https://www.eqpayforall.eu/" target="_blank"
+                    >Main Site (HTML/CSS/JS)</a
+                  >
+                  &
+                  <a href="https://vtt.eqpayforall.eu/" target="_blank"
+                    >VTT (Moodle LMS)</a
+                  >
+                </p>
+                <p>
+                  <b>Role/Scope:</b> Digital Lead, Development, and full build
+                  of both the main informational site and the learning platform.
+                  Responsible for UX, build, QA.
+                </p>
+                <p><b>Tech Stack:</b> HTML/CSS/JS + Moodle LMS</p>
+                <p><b>Timeline:</b> 2025</p>
+              </div>
             </div>
+          </section>
+
+          <!-- 4 -->
+          <section id="transperfect">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span
+                  >TransPerfect (DentsplySirona) — Enterprise Content
+                  Editor</span
+                >
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>Role/Scope:</b> Executed enterprise-scale content
+                  publishing in Adobe Experience Manager, ensuring workflow
+                  compliance and global brand consistency as Content Editor for
+                  DentsplySirona projects managed by TransPerfect.
+                </p>
+                <p><b>Tech Stack:</b> Adobe Experience Manager (AEM)</p>
+                <p><b>Timeline:</b> 2023–2024</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 5 -->
+          <section id="wrc">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>Womens Resource Center (WRC) — Digital Officer</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>URL:</b>
+                  <a href="https://www.wrc.org.uk/" target="_blank"
+                    >https://www.wrc.org.uk/</a
+                  >
+                </p>
+                <p>
+                  <b>Role/Scope:</b> Supported a major digital transformation
+                  through accessibility-led improvements, CRM oversight, and
+                  structured content operations.
+                </p>
+                <p><b>Tech Stack:</b> WordPress & CiviCRM</p>
+                <p><b>Timeline:</b> 2016</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 6 -->
+          <section id="avelospace">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>avelospace.net — Social Hub / Living Lab</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>Role/Scope:</b> Managed a community-focused “living lab”
+                  platform, maintaining content relevance, structural clarity,
+                  and platform adaptability.
+                </p>
+                <p><b>Tech Stack:</b> WordPress</p>
+                <p><b>Timeline:</b> 2018–2024</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 7 -->
+          <section id="genderpanic">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>genderpanic.com — E-commerce & Art Sales Platform</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>Role/Scope:</b> Managed an artist-led e-commerce and
+                  content platform, including WooCommerce setup, product
+                  architecture, and ongoing UX optimization.
+                </p>
+                <p><b>Tech Stack:</b> WordPress (WooCommerce)</p>
+                <p><b>Timeline:</b> 2018–2024</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 8 -->
+          <section id="feministfrequencies">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>feministfrequencies.org — Digital Book Platform</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>Role/Scope:</b> Managed a long-form digital book platform,
+                  overseeing UX, content workflows, and multi-year platform
+                  stability
+                </p>
+                <p><b>Tech Stack:</b> WordPress</p>
+                <p><b>Timeline:</b> 2014–2024</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 9 -->
+          <section id="ankaaproject">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>AnkaaProject — Site Redesign</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>URL:</b>
+                  <a href="https://www.ankaaproject.org/" target="_blank"
+                    >https://www.ankaaproject.org/</a
+                  >
+                </p>
+                <p>
+                  <b>Role/Scope:</b> Led a site redesign on Wix, optimizing
+                  structure, visuals, and content workflows to strengthen
+                  digital presence.
+                </p>
+                <p><b>Tech Stack:</b> WIX</p>
+                <p><b>Timeline:</b> 2025/26</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 10 -->
+          <section id="rainbowspectrum">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>Rainbow Spectrum — New Project Management</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>URL:</b>
+                  <a href="https://rainbowspectrum.org/" target="_blank"
+                    >https://rainbowspectrum.org/</a
+                  >
+                </p>
+                <p>
+                  <b>Role/Scope:</b> Architecting a new digital ecosystem for a
+                  consultancy, including design system creation, technical
+                  build, and ongoing content operations.
+                </p>
+                <p><b>Tech Stack:</b> New Project</p>
+                <p><b>Timeline:</b> 2026</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 11 -->
+          <section id="feministiqa">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>Feministiqa — First Site Edition</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>URL:</b>
+                  <a href="https://feministiqa.net/" target="_blank"
+                    >https://feministiqa.net/</a
+                  >
+                </p>
+                <p>
+                  <b>Role/Scope:</b> Designed and delivered the first edition of
+                  the site, establishing foundational design, navigation, and
+                  content workflows
+                </p>
+                <p><b>Tech Stack:</b> WordPress Builder</p>
+                <p><b>Timeline:</b> 2017</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 12 -->
+          <section id="electra">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>Electra Productions — Web Editor</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>URL:</b>
+                  <a href="https://www.electra-productions.com/" target="_blank"
+                    >https://www.electra-productions.com/</a
+                  >
+                </p>
+                <p>
+                  <b>Role/Scope:</b> Front-end and content development across a
+                  bespoke HTML/CSS/JS platform, ensuring robust visual and
+                  editorial standards.
+                </p>
+                <p><b>Tech Stack:</b> HTML/CSS/JS</p>
+                <p><b>Timeline:</b> 2010–2014</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 13 -->
+          <section id="leewayprojects">
+            <div class="platform-accordion">
+              <div class="platform-accordion-header">
+                <span>LeewayProjects — Full Management</span>
+                <span class="icon">+</span>
+              </div>
+              <div class="platform-accordion-content">
+                <p>
+                  <b>URL:</b>
+                  <a href="https://leewayprojects.github.io/" target="_blank"
+                    >https://leewayprojects.github.io/</a
+                  >
+                </p>
+                <p>
+                  <b>Role/Scope:</b> Owner, designer, developer, maintenance,
+                  and full management.
+                </p>
+                <p><b>Tech Stack:</b> HTML/CSS/JS</p>
+                <p>
+                  <b>Timeline:</b> Full lifecycle management of a personal
+                  portfolio site, including design, development, maintenance,
+                  and ongoing platform governance.
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
+      </div>
     </main>
 
-    <script>
-        // Active link highlighting
-        const sections = document.querySelectorAll('.content section'); 
-        const navLinks = document.querySelectorAll('.platform-sidebar ul li a'); // Updated Selector
+   <script>
+  // Active link highlighting
+  const sections = document.querySelectorAll(".content section");
+  const navLinks = document.querySelectorAll(".platform-sidebar ul li a");
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const scrollOffset = 100; 
+  window.addEventListener("scroll", () => {
+    let current = "";
+    const scrollOffset = 100;
 
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - scrollOffset;
-                if (scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop - scrollOffset;
+      if (scrollY >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  });
 
-        // Menu toggle for mobile
-        const menuToggle = document.getElementById('menu-toggle');
-        const sidebar = document.getElementById('platform-sidebar'); // Updated ID
+  // Menu toggle for mobile
+  const menuToggle = document.getElementById("menu-toggle");
+  const sidebar = document.getElementById("platform-sidebar");
 
-        menuToggle.addEventListener('click', () => {
-            if (sidebar.style.display === 'block') {
-                sidebar.style.display = 'none';
-            } else {
-                sidebar.style.display = 'block';
-            }
-        });
+  menuToggle.addEventListener("click", () => {
+    if (sidebar.style.display === "block") {
+      sidebar.style.display = "none";
+    } else {
+      sidebar.style.display = "block";
+    }
+  });
 
-// Accordion functionality
-const accordionHeaders = document.querySelectorAll('.platform-accordion-header');
+  // Accordion functionality
+  const accordionHeaders = document.querySelectorAll(".platform-accordion-header");
 
-accordionHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-        const content = header.nextElementSibling;
-                
-                // Close all other open accordions
-                document.querySelectorAll('.platform-accordion-content').forEach(otherContent => {
-                    if (otherContent !== content && otherContent.style.display === 'block') {
-                        otherContent.style.display = 'none';
-                        otherContent.previousElementSibling.querySelector('.icon').textContent = '+';
-                    }
-                });
+  accordionHeaders.forEach((header) => {
+    header.addEventListener("click", () => {
+      const content = header.nextElementSibling;
+      const icon = header.querySelector(".icon"); // ✅ declared here
 
-                // Toggle the clicked accordion
-                if (content.style.display === 'block') {
-                    content.style.display = 'none';
-                    icon.textContent = '+';
-                } else {
-                    content.style.display = 'block';
-                    icon.textContent = '-';
-                }
-            });
-        });
-    </script> 
-</body>
+      // Close all other open accordions
+      document.querySelectorAll(".platform-accordion-content").forEach((otherContent) => {
+        if (otherContent !== content && otherContent.style.display === "block") {
+          otherContent.style.display = "none";
+          otherContent.previousElementSibling.querySelector(".icon").textContent = "+";
+        }
+      });
+
+      // Toggle the clicked accordion
+      if (content.style.display === "block") {
+        content.style.display = "none";
+        icon.textContent = "+"; // ✅ now works
+      } else {
+        content.style.display = "block";
+        icon.textContent = "-"; // ✅ now works
+      }
+    });
+  });
+</script>
+  </body>
 </html>
