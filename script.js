@@ -80,7 +80,7 @@ const projectData = {
         funder: 'RMIT',
         role: 'Artist',
         where: 'Melbourne Australia',
-        tags: ['Public Art', 'Site-specificity', 'Sculpture', 'Australia'],
+        tags: ['Public Art', 'Socially Engaged Art','Site-specificity', 'Sculpture', 'Australia'],
         projectUrl: '-'
     },
     'as-you-listen': {
@@ -93,7 +93,7 @@ const projectData = {
         role: 'Artist',
         when: '2011',
         where: 'London, UK',
-        tags: ['Public Art', 'Site-specificity', 'Sound-sculpture', 'Austerity'],
+        tags: ['Public Art', 'Socially Engaged Art','Site-specificity', 'Sound-sculpture', 'Austerity'],
         projectUrl: '-'
     },
     'channelling': {
@@ -184,7 +184,7 @@ const projectData = {
         role: 'Archivist, Educator',
         when: '2010 - Present',
         where: 'London, UK',
-        tags: ['Sound Art', 'Her Noise', 'Experimental Music', 'Electra', 'CRiSAP'],
+        tags: ['Sound Art', 'Her Noise', 'Experimental Music', 'Socially Engaged Art', 'Electra', 'CRiSAP'],
         projectUrl: 'https://hernoise.org/'
     },
     'never-travel': {
@@ -236,7 +236,7 @@ const projectData = {
         role: 'Co-founder',
         when: '2012 - 2019',
         where: 'London, UK & Tokyo, Japan',
-        tags: ['SGFA', 'social composition', 'research', 'education', 'CRiSAP'],
+        tags: ['SGFA', 'social composition', 'research', 'education', 'Socially Engaged Art','CRiSAP'],
         projectUrl: 'https://hernoise.org/events-responses/sgfa-2012/'
     },
     'swdg': {
@@ -249,7 +249,7 @@ const projectData = {
         role: 'Principle Investigator',
         when: '2016',
         where: 'UAL London, UK',
-        tags: ['SGFA', 'SWDG', 'TransCulture', 'InclusiveEducation', 'SoundStudies', 'UAL'],
+        tags: ['SGFA', 'SWDG', 'TransCulture', 'InclusiveEducation', 'SoundStudies', 'Socially Engaged Art', 'UAL'],
         projectUrl: 'https://hernoise.org/events-responses/swdg/'
     },
     'valerie': {
@@ -275,7 +275,7 @@ const projectData = {
         role: 'Composer',
         when: '2017',
         where: 'Goldsmiths University, London, UK',
-        tags: ['WRPM', 'Archive', 'Experimental Music', 'Goldsmiths', 'Residency'],
+        tags: ['WRPM', 'Archive', 'Experimental Music', 'Socially Engaged Art', 'Goldsmiths', 'Residency'],
         projectUrl: ''
     },
     'genderpanic': {
@@ -301,10 +301,106 @@ const projectData = {
         role: 'Founder',
         when: '2017-22',
         where: 'Athens, Greece',
-        tags: ['AveloSpace', 'LGBTQIA+', 'Social Center', 'Athens'],
+        tags: ['AveloSpace', 'LGBTQIA+', 'Socially Engaged Art', 'Social Center', 'Athens'],
         projectUrl: ''
     },
 };
+
+const projectIdAliases = {
+    '589': 'plateau589',
+    'crisis-ordinary': 'crisis',
+    'feminisms_and_the_sonic': 'hnatate',
+    'fractured-intimacies': 'fractured',
+    'gender-panic': 'genderpanic',
+    'avelospace': 'avelo'
+};
+
+function normalizeTag(tag) {
+    return tag.trim().toLocaleLowerCase();
+}
+
+function getCardProjectId(card) {
+    if (card.dataset.projectId) return card.dataset.projectId;
+
+    const drawerCall = card.getAttribute('onclick')?.match(/openDrawer\(['"]([^'"]+)['"]\)/);
+    if (drawerCall) return drawerCall[1];
+
+    const href = card.getAttribute('href');
+    if (!href) return '';
+
+    const fileName = href.split('/').pop().split(/[?#]/)[0].replace(/\.html$/i, '');
+    return projectIdAliases[fileName] || fileName;
+}
+
+function getFilterIndicator() {
+    const grid = document.querySelector('.grid');
+    if (!grid) return null;
+
+    let indicator = document.getElementById('active-project-filter');
+    if (indicator) return indicator;
+
+    indicator = document.createElement('div');
+    indicator.id = 'active-project-filter';
+    indicator.className = 'active-project-filter';
+    indicator.hidden = true;
+    indicator.innerHTML = '<span aria-live="polite"></span><a class="clear-filter" href="/index.html">Clear filter</a>';
+    grid.before(indicator);
+    return indicator;
+}
+
+function getProjectListingUrl(tag) {
+    const url = new URL('/index.html', window.location.origin);
+    url.searchParams.set('tag', tag);
+    return `${url.pathname}${url.search}`;
+}
+
+function filterProjectsByTag(tag) {
+    window.location.assign(getProjectListingUrl(tag));
+}
+
+function applyProjectFilter(tag) {
+    const normalizedTag = normalizeTag(tag);
+    const cards = document.querySelectorAll('.grid-item');
+    let matchCount = 0;
+
+    cards.forEach(card => {
+        const projectId = getCardProjectId(card);
+        const projectTags = projectData[projectId]?.tags || [];
+        const matches = projectTags.some(projectTag => normalizeTag(projectTag) === normalizedTag);
+        card.hidden = !matches;
+        if (matches) matchCount += 1;
+    });
+
+    const indicator = getFilterIndicator();
+    if (indicator) {
+        indicator.querySelector('span').textContent = `Filtering by “${tag}”`;
+        indicator.hidden = false;
+    }
+
+    let noResults = document.getElementById('project-filter-empty');
+    if (!noResults) {
+        noResults = document.createElement('p');
+        noResults.id = 'project-filter-empty';
+        noResults.className = 'project-filter-empty';
+        noResults.setAttribute('role', 'status');
+        document.querySelector('.grid')?.before(noResults);
+    }
+    noResults.textContent = `No projects match “${tag}”. Try another tag or clear the filter.`;
+    noResults.hidden = matchCount > 0;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.grid-item').forEach(card => {
+        const projectId = getCardProjectId(card);
+        if (projectId) card.dataset.projectId = projectId;
+    });
+
+    const isProjectListingPage = Boolean(document.querySelector('main > .grid'));
+    const selectedTag = new URLSearchParams(window.location.search).get('tag');
+    if (isProjectListingPage && selectedTag?.trim()) {
+        applyProjectFilter(selectedTag.trim());
+    }
+});
 
 function openDrawer(projectId) {
     const project = projectData[projectId];
@@ -386,9 +482,12 @@ function openDrawer(projectId) {
     const tagsContainer = document.getElementById('project-tags');
     tagsContainer.innerHTML = '';
     project.tags.forEach(tag => {
-        const tagElement = document.createElement('span');
+        const tagElement = document.createElement('a');
+        tagElement.href = getProjectListingUrl(tag);
         tagElement.className = 'tag';
         tagElement.textContent = tag;
+        tagElement.setAttribute('aria-label', `Filter projects by ${tag}`);
+        tagElement.addEventListener('click', closeDrawer);
         tagsContainer.appendChild(tagElement);
     });
 
@@ -399,8 +498,8 @@ function openDrawer(projectId) {
 }
 
 function closeDrawer() {
-    document.querySelector('.drawer-backdrop').classList.remove('show');
-    document.getElementById('project-drawer').classList.remove('open');
+    document.querySelector('.drawer-backdrop')?.classList.remove('show');
+    document.getElementById('project-drawer')?.classList.remove('open');
     document.body.style.overflow = '';
 }
 
