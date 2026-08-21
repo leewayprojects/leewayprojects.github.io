@@ -223,7 +223,7 @@ const projectData = {
         role: 'Researcher, Workshop Lead',
         when: '2014',
         where: 'London, UK',
-        tags: ['performance score', 'social composition', 'workshop', 'research', 'education', 'Electra'],
+        tags: ['performance score', 'social composition', 'workshop', 'research', 'education', 'Socially Engaged Art', 'Electra'],
         projectUrl: 'https://www.electra-productions.com/projects/2014/here/overview.shtml'
     },
     'sgfa': {
