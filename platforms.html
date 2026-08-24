@@ -16,160 +16,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
-    <style>
-      .container {
-        display: flex;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      /* Renamed from .research-sidebar */
-      .platform-sidebar {
-        width: 200px;
-        position: sticky;
-        top: 20px;
-        align-self: flex-start;
-        background-color: #f7f7f7;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      .platform-sidebar ul {
-        list-style-type: none;
-        padding: 0;
-      }
-
-      .platform-sidebar ul li {
-        margin: 15px 0;
-      }
-
-      .platform-sidebar ul li a {
-        text-decoration: none;
-        color: #333;
-        font-weight: bold;
-        transition: color 0.3s;
-      }
-
-      .platform-sidebar ul li a:hover {
-        color: #007bff;
-      }
-
-      .platform-sidebar ul li a.active {
-        color: #007bff;
-      }
-
-      .content {
-        flex: 1;
-        margin-left: 40px;
-      }
-
-      .content section {
-        padding: 50px 0;
-        border-bottom: 1px solid #ddd;
-      }
-
-      /* Introductory styles  */
-      .platform-intro-hero {
-        height: 200px;
-        background-color: #f0f0f0;
-        margin-bottom: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .platform-intro-hero h1 {
-        font-size: 2em;
-        text-align: center;
-      }
-      .platform-intro-section {
-        padding: 10px 20px 20px;
-        border-bottom: 1px solid #ddd;
-      }
-      .platform-intro-content {
-        max-width: 800px;
-        margin: 0 auto;
-        line-height: 1.6;
-      }
-
-      /* Platform Accordion Styles */
-      .platform-accordion {
-        width: 100%;
-        max-width: 800px;
-        margin-left: 0px;
-        box-sizing: border-box;
-        border: 1px solid #ffffff;
-        border-radius: 5px;
-        overflow: hidden;
-      }
-
-      .platform-accordion-header {
-        background: #ed1ab8;
-        cursor: pointer;
-        padding: 15px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: bold;
-      }
-
-      .platform-accordion-content {
-        display: none;
-        padding: 15px;
-        background: #fafafa;
-      }
-
-      /* Responsive Sidebar */
-      .menu-toggle {
-        display: none;
-        background-color: #3f8dae;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-family: "Inter", sans-serif;
-        font-size: 18px;
-        font-weight: bold;
-        text-align: left;
-        cursor: pointer;
-        margin-bottom: 20px;
-        border-radius: 5px;
-      }
-
-      @media (max-width: 768px) {
-        .container {
-          flex-direction: column;
-        }
-
-        .platform-accordion {
-          max-width: 100%;
-          margin: 12px 0;
-          padding: 0;
-        }
-
-        .platform-accordion-header {
-          max-width: 100%;
-          border-radius: 5px;
-        }
-
-        .content {
-          margin-left: 0; /* ← this is likely the culprit */
-        }
-
-        .platform-sidebar {
-          /* Renamed */
-          width: 100%;
-          position: relative;
-          top: 0;
-          box-shadow: none;
-          display: none;
-        }
-
-        .menu-toggle {
-          display: block;
-        }
-      }
-    </style>
   </head>
 
   <!-- Google tag (gtag.js) -->
@@ -182,7 +28,7 @@
   gtag('config', 'G-F44760LK8L');
 </script>
 
-  <body>
+  <body class="platforms-page">
     <aside class="sidebar">
       <header>
         <a href="/">
@@ -197,7 +43,7 @@
         <ul class="nav">
           <li><a href="index.html">Projects</a></li>
           <li><a href="research.html">Research</a></li>
-          <li class="active"><a href="platforms.html">Platforms</a></li>
+          <li class="active"><a href="platforms.html" aria-current="page">Platforms</a></li>
           <li><a href="content-campaigns.html">Content &amp; Campaigns</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
@@ -211,7 +57,8 @@
     <main>
       <section id="introduction">
         <div class="platform-intro-hero">
-          <h1>Digital Platform Operations & Support</h1>
+          <p class="page-kicker">LEW—DP / PLATFORM OPERATIONS</p>
+          <h1>Digital Platform Operations &amp; Support</h1>
         </div>
 
         <div class="platform-intro-section">

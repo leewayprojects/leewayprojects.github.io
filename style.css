@@ -2,8 +2,8 @@
    Global & Variables
 ------------------------------------------------------------------ */
 
-/* Google Font — Poppins */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+/* Google Fonts — established site face plus the shared annotation face */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Poppins:wght@300;400;500;600&display=swap");
 
 :root {
   --sidebar-width: 240px; /* kept for reference, but layout now uses grid tracks */
@@ -11,7 +11,16 @@
   --bg-main: #fafafa;
   --bg-card: #ffffff;
   --text-main: #1C1C1E;
-  --accent: #581252;
+  --paper: #f5f3ed;
+  --paper-deep: #f1ede4;
+  --ink: #11110f;
+  --rust: #a34132;
+  --plum: #581252;
+  --line: #c9c6bc;
+  --soft-line: #dedbd2;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+  --page-gutter: clamp(1.5rem, 5vw, 5.5rem);
+  --accent: var(--plum);
 }
 
 html {
@@ -567,3 +576,505 @@ button {
 
 
 /* Platforms Grid*/
+
+/* ------------------------------------------------------------------
+   Shared editorial refinements — Research, Platforms and About
+------------------------------------------------------------------ */
+
+.nav a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rust);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.35em;
+}
+
+.page-kicker {
+  margin: 0;
+  color: var(--rust);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.075em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.research-page main,
+.platforms-page main,
+.about-page main {
+  color: var(--ink);
+  background-color: var(--paper);
+}
+
+.research-page main a,
+.platforms-page main a,
+.about-page main a {
+  color: var(--plum);
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.research-page main a:hover,
+.platforms-page main a:hover,
+.about-page main a:hover {
+  color: var(--rust);
+}
+
+.research-page main a:focus-visible,
+.platforms-page main a:focus-visible,
+.about-page main a:focus-visible,
+.research-page .accordion-header:focus-visible,
+.platforms-page .platform-accordion-header:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 3px;
+}
+
+/* Research */
+
+.research-page .research-intro-hero {
+  position: relative;
+  border-bottom: 1px solid var(--ink);
+}
+
+.research-page .research-title-block {
+  position: absolute;
+  bottom: 0;
+  left: var(--page-gutter);
+  width: min(30rem, calc(100% - (2 * var(--page-gutter))));
+  padding: 0.8rem 1.25rem 1.2rem;
+  background: var(--paper);
+  border-top: 1px solid var(--ink);
+}
+
+.research-page .research-title-block h1 {
+  margin: 0.18rem 0 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: clamp(3.2rem, 6vw, 6rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+}
+
+.research-page .research-intro-section {
+  min-height: 0;
+  margin: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.research-page .research-intro-content {
+  width: auto;
+  max-width: 72ch;
+  margin: 0 auto 0 clamp(2rem, 8vw, 7rem);
+  padding: clamp(2rem, 4vw, 3.5rem) var(--page-gutter);
+  color: var(--ink);
+}
+
+.research-page .container {
+  display: grid;
+  grid-template-columns: minmax(10rem, 12rem) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(1.5rem, 4vw, 4rem) 6rem;
+}
+
+.research-page .research-sidebar {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+  width: auto;
+  padding: 1rem 0 0;
+  background: transparent;
+  border-top: 1px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.research-page .research-sidebar ul,
+.platforms-page .platform-sidebar ul {
+  padding: 0;
+  list-style: none;
+}
+
+.research-page .research-sidebar ul li {
+  margin: 0;
+  border-bottom: 1px solid var(--soft-line);
+}
+
+.research-page .research-sidebar ul li a {
+  display: block;
+  padding: 0.72rem 0;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.research-page .research-sidebar ul li a:hover,
+.research-page .research-sidebar ul li a.active {
+  color: var(--rust);
+}
+
+.research-page .content {
+  min-width: 0;
+  margin-left: 0;
+}
+
+.research-page .content section {
+  padding: 0 0 clamp(3rem, 6vw, 5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.research-page .content section + section {
+  padding-top: clamp(3rem, 6vw, 5rem);
+}
+
+.research-page .content h2 {
+  margin: 0 0 1.5rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: clamp(2rem, 3.2vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.research-page .accordion {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  overflow: visible;
+}
+
+.research-page .accordion:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.research-page .accordion-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.05rem 0;
+  color: var(--ink);
+  background: transparent;
+  font-weight: 500;
+  transition: background-color 160ms ease, padding 160ms ease;
+}
+
+.research-page .accordion-header:hover {
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  background: var(--paper-deep);
+}
+
+.research-page .accordion-header .icon {
+  color: var(--rust);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.research-page .accordion-content {
+  display: none;
+  padding: 1.25rem 1.5rem 1.5rem;
+  background: rgba(255, 255, 255, 0.45);
+  border-left: 3px solid var(--rust);
+}
+
+.research-page .menu-toggle,
+.platforms-page .menu-toggle {
+  display: none;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1rem;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+/* Platforms */
+
+.platforms-page #introduction {
+  border-bottom: 1px solid var(--line);
+}
+
+.platforms-page .platform-intro-hero {
+  display: block;
+  height: auto;
+  min-height: 18rem;
+  margin: 0;
+  padding: clamp(3rem, 7vw, 6rem) var(--page-gutter) clamp(3rem, 6vw, 5rem);
+  background:
+    linear-gradient(to right, transparent calc(100% - 1px), rgba(17, 17, 15, 0.06) 1px) 0 0 / min(18vw, 220px) 100%,
+    var(--paper);
+  border-top: 1px solid var(--ink);
+}
+
+.platforms-page .platform-intro-hero h1 {
+  max-width: 13ch;
+  margin: 2rem 0 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: clamp(3rem, 5.4vw, 5.75rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  text-align: left;
+}
+
+.platforms-page .platform-intro-section {
+  padding: clamp(2rem, 4vw, 3.5rem) var(--page-gutter);
+  border-bottom: 0;
+}
+
+.platforms-page .platform-intro-content {
+  max-width: 72ch;
+  margin: 0 auto 0 clamp(1rem, 7vw, 6rem);
+  line-height: 1.65;
+}
+
+.platforms-page .container {
+  display: grid;
+  grid-template-columns: minmax(10rem, 12rem) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(1.5rem, 4vw, 4rem) 6rem;
+}
+
+.platforms-page .platform-sidebar {
+  position: sticky;
+  top: 1.5rem;
+  align-self: start;
+  width: auto;
+  padding: 1rem 0 0;
+  background: transparent;
+  border-top: 1px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.platforms-page .platform-sidebar h2 {
+  margin: 0 0 0.9rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.platforms-page .platform-sidebar ul li {
+  margin: 0;
+  border-bottom: 1px solid var(--soft-line);
+}
+
+.platforms-page .platform-sidebar ul li a {
+  display: block;
+  padding: 0.65rem 0;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.platforms-page .platform-sidebar ul li a:hover,
+.platforms-page .platform-sidebar ul li a.active {
+  color: var(--rust);
+}
+
+.platforms-page .content {
+  min-width: 0;
+  margin-left: 0;
+  counter-reset: platform-row;
+}
+
+.platforms-page .content section {
+  padding: 0;
+  border-bottom: 1px solid var(--line);
+  counter-increment: platform-row;
+}
+
+.platforms-page .platform-accordion {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.platforms-page .platform-accordion-header {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.15rem 1rem;
+  color: var(--ink);
+  background: var(--paper-deep);
+  border-left: 3px solid transparent;
+  font-weight: 500;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.platforms-page .platform-accordion-header::before {
+  content: counter(platform-row, decimal-leading-zero);
+  color: var(--rust);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+}
+
+.platforms-page .platform-accordion-header:hover {
+  background: #ece6db;
+  border-left-color: var(--rust);
+}
+
+.platforms-page .platform-accordion-header .icon {
+  color: var(--plum);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.platforms-page .platform-accordion-content {
+  display: none;
+  padding: 1.4rem 1.5rem 1.7rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-left: 3px solid var(--rust);
+}
+
+.platforms-page .platform-accordion-content p + p {
+  margin-top: 0.85rem;
+}
+
+/* About */
+
+.about-page .main-content {
+  display: block;
+  padding: clamp(3rem, 6vw, 6rem) var(--page-gutter) 6rem;
+}
+
+.about-page .about-page-header,
+.about-page .inner-grid {
+  width: 100%;
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.about-page .about-page-header {
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ink);
+}
+
+.about-page .about-page-header h1 {
+  max-width: 10ch;
+  margin: 1.25rem 0 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: clamp(3.2rem, 6vw, 6rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+}
+
+.about-page .about-intro-hero {
+  color: var(--ink);
+  line-height: 1.62;
+}
+
+.about-page .about-intro-hero img {
+  margin-right: 2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  box-shadow: 7px 7px 0 var(--paper-deep), 8px 8px 0 var(--rust);
+}
+
+@media (max-width: 768px) {
+  .research-page .research-title-block {
+    position: static;
+    width: 100%;
+    padding: 0.9rem 1.5rem 1.4rem;
+    border-bottom: 0;
+  }
+
+  .research-page .research-intro-content {
+    max-width: none;
+    margin: 0;
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  .research-page .container,
+  .platforms-page .container {
+    display: block;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .research-page .research-sidebar,
+  .platforms-page .platform-sidebar {
+    position: relative;
+    top: 0;
+    display: none;
+  }
+
+  .research-page .menu-toggle,
+  .platforms-page .menu-toggle {
+    display: block;
+  }
+
+  .research-page .content section:first-child,
+  .platforms-page .content section:first-child {
+    margin-top: 2.5rem;
+  }
+
+  .platforms-page .platform-intro-hero {
+    min-height: 0;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  .platforms-page .platform-intro-hero h1 {
+    margin-top: 1.5rem;
+  }
+
+  .platforms-page .platform-intro-section,
+  .about-page .main-content {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .platforms-page .platform-intro-content {
+    margin-left: 0;
+  }
+
+  .platforms-page .platform-accordion-header {
+    grid-template-columns: 2rem minmax(0, 1fr) auto;
+    gap: 0.65rem;
+    padding: 1rem 0.75rem;
+  }
+
+  .about-page .about-page-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .about-page .about-intro-hero img {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .research-page main a,
+  .platforms-page main a,
+  .about-page main a,
+  .research-page .accordion-header,
+  .platforms-page .platform-accordion-header {
+    transition: none;
+  }
+}

@@ -1,24 +1,12 @@
 :root {
-  --campaign-paper: #f5f3ed;
-  --campaign-ink: #11110f;
+  --campaign-paper: var(--paper);
+  --campaign-ink: var(--ink);
   --campaign-muted: #66655f;
-  --campaign-line: #c9c6bc;
-  --campaign-soft-line: #dedbd2;
-  --campaign-repair: #a34132;
+  --campaign-line: var(--line);
+  --campaign-soft-line: var(--soft-line);
+  --campaign-repair: var(--rust);
   --campaign-gutter: clamp(1.5rem, 5vw, 5.5rem);
   --campaign-max-width: 1180px;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 .skip-link {
@@ -38,7 +26,7 @@
 
 .content-campaigns-body .nav a[aria-current="page"] {
   text-decoration: underline;
-  text-decoration-color: currentColor;
+  text-decoration-color: var(--campaign-repair);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.35em;
 }
@@ -110,7 +98,7 @@
   line-height: 0.82;
 }
 
-.campaigns-intro h1 span[aria-hidden="true"] {
+.campaigns-intro h1 .campaigns-ampersand {
   color: var(--campaign-repair);
   font-family: "IBM Plex Mono", "Courier New", monospace;
   font-size: 0.55em;
