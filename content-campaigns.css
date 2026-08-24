@@ -98,7 +98,8 @@
   line-height: 0.82;
 }
 
-.campaigns-intro h1 .campaigns-ampersand {
+.campaigns-intro h1 .campaigns-ampersand,
+.campaigns-intro h1 > span[aria-hidden="true"] {
   color: var(--campaign-repair);
   font-family: "IBM Plex Mono", "Courier New", monospace;
   font-size: 0.55em;
@@ -518,6 +519,51 @@
   margin-top: 4rem;
 }
 
+/*
+ * The primary sidebar leaves the main panel substantially narrower than the
+ * viewport. Collapse only the intro before its two columns begin to collide;
+ * the remaining page sections retain their existing tablet layouts.
+ */
+@media (max-width: 1180px) {
+  .campaigns-intro {
+    grid-template-columns: minmax(0, 1fr);
+    column-gap: 0;
+  }
+
+  .campaigns-intro h1,
+  .campaigns-subtitle,
+  .campaigns-summary,
+  .campaigns-annotation {
+    grid-column: 1;
+    min-width: 0;
+  }
+
+  .campaigns-intro h1 {
+    max-width: 100%;
+    font-size: clamp(3.6rem, 8vw, 7rem);
+  }
+
+  .campaigns-subtitle {
+    align-self: start;
+    max-width: 34rem;
+    margin-top: 2.5rem;
+    padding-top: 0;
+  }
+
+  .campaigns-summary {
+    max-width: 42rem;
+    margin: 3rem 0 0 clamp(0rem, 7vw, 5rem);
+  }
+
+  .campaigns-annotation {
+    align-self: start;
+    justify-self: end;
+    max-width: 24rem;
+    margin-top: 2rem;
+    text-align: right;
+  }
+}
+
 @media (max-width: 1020px) {
   .campaigns-intro,
   .section-heading,
@@ -559,15 +605,26 @@
   }
 
   .campaigns-intro h1 {
-    font-size: clamp(3.6rem, 18vw, 6rem);
+    font-size: clamp(3rem, 15vw, 6rem);
+    letter-spacing: -0.065em;
   }
 
   .campaigns-subtitle {
-    margin-top: 2.5rem;
+    max-width: 100%;
+    margin-top: 2rem;
   }
 
   .campaigns-summary {
+    max-width: 100%;
+    margin-top: 2.5rem;
     margin-left: 0;
+  }
+
+  .campaigns-annotation {
+    justify-self: start;
+    max-width: 100%;
+    margin-top: 2rem;
+    text-align: left;
   }
 
   .section-heading .section-number {
