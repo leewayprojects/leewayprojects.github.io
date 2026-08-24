@@ -526,4 +526,34 @@ function toggleReadMore() {
         btnText.innerHTML = "Read more"; 
         moreText.style.display = "inline";
     }
+
+
+    // Scroll-to-top button
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollButton = document.querySelector(".scroll-to-top");
+
+  if (!scrollButton) return;
+
+  const updateScrollButton = () => {
+    scrollButton.style.display =
+      window.scrollY > 300 ? "block" : "none";
+  };
+
+  scrollButton.addEventListener("click", () => {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    window.scrollTo({
+      top: 0,
+      behavior: reducedMotion ? "auto" : "smooth"
+    });
+  });
+
+  window.addEventListener("scroll", updateScrollButton, {
+    passive: true
+  });
+
+  updateScrollButton();
+});
 }

@@ -318,6 +318,28 @@
 </section> -->
 
   </main>
-   
+ 
+  
+  <button
+  type="button"
+  class="scroll-to-top"
+  aria-label="Scroll to top"
+></button>
+
+<script>
+  const scrollToTopButton = document.querySelector(".scroll-to-top");
+
+  window.addEventListener("scroll", () => {
+    scrollToTopButton.style.display =
+      window.scrollY > 300 ? "block" : "none";
+  });
+
+  scrollToTopButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
 </body>
 </html>
