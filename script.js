@@ -42,7 +42,7 @@ const projectData = {
         team: '7 Partner Consortia',
         role: 'Project Manager',
         where: 'Latvia, Poland, Germany, Cyprus, Greece',
-        tags: ['Education', 'Gender Equality', 'Social Impact', 'Web Platform'],
+        tags: ['Education', 'Gender Equality', 'Social Impact', 'Web Platform', 'Moodle', 'Virtual Think Tank', 'Youth Empowerment', 'Erasmus+'],
         projectUrl: 'https://www.eqpayforall.eu/'
     },
     'plateau589': {
@@ -56,7 +56,7 @@ const projectData = {
         team: '-',
         role: 'Co-founder',
         where: 'Melbourne, Australia',
-        tags: ['Socially Engaged Art', 'Public Art', 'Curation'],
+        tags: ['Socially Engaged Art', 'Public Art', 'Curation', 'Community Engagement', 'Site-specificity', 'Punk'],
         projectUrl: 'projects/589.html'
     },
     'toots': {
@@ -68,7 +68,7 @@ const projectData = {
         org: '-',
         funder: 'Arts Council England',
         role: 'Composer',
-        tags: ['Experimental', 'Algorithmic Composition', 'Decolonial', 'South Asian Diaspora'],
+        tags: ['Experimental', 'Algorithmic Composition', 'Decolonial', 'South Asian Diaspora', 'SuperCollider', 'Psychoacoustics', 'Carnatic Shruti', 'Just Intonation'],
         projectUrl: 'https://leeingleton.bandcamp.com/album/dancing-with-toots-benedicta'
     },
     'anon': {
@@ -80,7 +80,7 @@ const projectData = {
         funder: 'RMIT',
         role: 'Artist',
         where: 'Melbourne Australia',
-        tags: ['Public Art', 'Socially Engaged Art','Site-specificity', 'Sculpture', 'Australia'],
+        tags: ['Public Art', 'Socially Engaged Art','Site-specificity', 'Sound-sculpture', 'Censorship', 'Anti-Terrorism Bill 2005', 'Harvest Festival', 'CERES Community Environment Park'],
         projectUrl: '-'
     },
     'as-you-listen': {
@@ -93,7 +93,7 @@ const projectData = {
         role: 'Artist',
         when: '2011',
         where: 'London, UK',
-        tags: ['Public Art', 'Socially Engaged Art','Site-specificity', 'Sound-sculpture', 'Austerity'],
+        tags: ['Public Art', 'Socially Engaged Art','Site-specificity', 'Sound-sculpture', 'Austerity', 'Hackney Wicked Festival'],
         projectUrl: '-'
     },
     'channelling': {
@@ -106,7 +106,7 @@ const projectData = {
         role: 'Composer',
         when: '2022',
         where: 'Athens, Greece',
-        tags: ['Experimental', 'Algorithmic Composition', 'Psychoacoustics', 'Athens'],
+        tags: ['Experimental', 'Algorithmic Composition', 'Psychoacoustics', 'SuperCollider', 'Carnatic Shruti', 'Just Intonation'],
         projectUrl: 'https://vimeo.com/783711152'
     },
     'crisis': {
@@ -119,7 +119,7 @@ const projectData = {
         role: 'Composer',
         when: '2013',
         where: 'London, UK',
-        tags: ['Experimental', 'Field Recording', 'Ambient Citizenship', 'Museruole'],
+        tags: ['Experimental', 'Field Recording', 'Ambient Citizenship', 'Museruole', 'Sound Art'],
         projectUrl: 'https://museruole.tumblr.com/jukebox'
     },
     'femifesto': {
@@ -132,7 +132,7 @@ const projectData = {
         role: 'Composer',
         when: '2012',
         where: 'London, UK',
-        tags: ['Experimental music', 'Max/MSP', 'Synthesis'],
+        tags: ['Experimental music', 'Max/MSP', 'Synthesis', 'Feminist sound art', 'Soundworks', 'ICA'],
         projectUrl: ''
     },
     'hnatate': {
@@ -145,7 +145,7 @@ const projectData = {
         role: 'Curator',
         when: '2012',
         where: 'Tate Modern, London, UK',
-        tags: ['Her Noise', 'Feminist sound art', 'Experimental Music', 'Tate Modern'],
+        tags: ['Her Noise', 'Feminist sound art', 'Experimental Music', 'Tate Modern', 'Sound Art', 'Socially Engaged Art', 'Electra', 'CRiSAP'],
         projectUrl: 'https://hernoise.org/her-noise-feminisms-the-sonic/'
     },
     'ff': {
@@ -158,7 +158,7 @@ const projectData = {
         role: 'Author',
         when: '2014-17',
         where: '-',
-        tags: ['Her Noise', 'Feminist sound art', 'Experimental Music', 'Tate Modern'],
+        tags: ['Her Noise', 'Feminist sound art', 'Experimental Music', 'Critical Writing'],
         projectUrl: ''
     },
     'fractured': {
@@ -171,7 +171,7 @@ const projectData = {
         role: 'Composer',
         when: '2016',
         where: 'Wellcome Collection, London, UK',
-        tags: ['Sound Art', 'Wellcome Collection'],
+        tags: ['Sound Art', 'Wellcome Collection', 'Experimental Music', 'Archives'],
         projectUrl: 'https://hernoise.org/her-noise-feminisms-the-sonic/'
     },
     'hna': {
@@ -184,7 +184,7 @@ const projectData = {
         role: 'Archivist, Educator',
         when: '2010 - Present',
         where: 'London, UK',
-        tags: ['Sound Art', 'Her Noise', 'Experimental Music', 'Socially Engaged Art', 'Electra', 'CRiSAP'],
+        tags: ['Sound Art', 'Her Noise', 'Experimental Music', 'Socially Engaged Art', 'Electra', 'CRiSAP', 'Archive', 'Feminist Sound Art', 'Queer Sound Art', 'Decolonial Sound Studies'],
         projectUrl: 'https://hernoise.org/'
     },
     'never-travel': {
@@ -197,7 +197,7 @@ const projectData = {
         role: 'Composer',
         when: '2020',
         where: 'Colombo, Sri Lanka & Online',
-        tags: ['Colomboscope', 'A Thousand Channels', 'Experimental Music', 'SuperCollider', 'Psychoacoustics'],
+        tags: ['Colomboscope', 'A Thousand Channels', 'Experimental Music', 'SuperCollider', 'Psychoacoustics', 'South Asian Diaspora', 'Sri Lankan Diaspora', 'Astrology', 'Racism', 'State Propaganda'],
         projectUrl: 'https://www.colomboscope.lk/athousandchannels-episode-one'
     },
     'owiob': {
@@ -210,7 +210,7 @@ const projectData = {
         role: 'Composer',
         when: '2015',
         where: 'Wysing UK & Melbourne Australia',
-        tags: ['performance score', 'ethical listening', 'spoken word', 'Wysing', 'Electra'],
+        tags: ['performance score', 'ethical listening', 'spoken word', 'Wysing', 'Electra', 'Women\'s Art Register', 'Socially Engaged Art'],
         projectUrl: 'https://www.electra-productions.com/projects/2015/wysing/ourwordisourbond.shtml'
     },
     'scores': {
@@ -236,7 +236,7 @@ const projectData = {
         role: 'Co-founder',
         when: '2012 - 2019',
         where: 'London, UK & Tokyo, Japan',
-        tags: ['SGFA', 'social composition', 'research', 'education', 'Socially Engaged Art','CRiSAP'],
+        tags: ['SGFA', 'social composition', 'research', 'education', 'Socially Engaged Art','CRiSAP', 'Her Noise', 'Feminist Sound Art', 'Experimental Music', 'Sound Studies'],
         projectUrl: 'https://hernoise.org/events-responses/sgfa-2012/'
     },
     'swdg': {
@@ -288,7 +288,7 @@ const projectData = {
         role: 'Lead Artist',
         when: '2018-19',
         where: 'Athens, Greece',
-        tags: ['GenderPanic', 'LGBTQIA+', 'Socially Engaged Art', 'Athens'],
+        tags: ['GenderPanic', 'LGBTQIA+', 'Socially Engaged Art', 'Athens', 'T-Shirt', 'Queer', 'Diaspora', 'Immigrant', 'Upcycling', 'Screen Printing', 'Aphrodite Film Festival'],
         projectUrl: 'http://youtu.be/zpTwKqN-NjQ'
     },
     'avelo': {
@@ -301,7 +301,7 @@ const projectData = {
         role: 'Founder',
         when: '2017-22',
         where: 'Athens, Greece',
-        tags: ['AveloSpace', 'LGBTQIA+', 'Socially Engaged Art', 'Social Center', 'Athens'],
+        tags: ['AveloSpace', 'LGBTQIA+', 'Socially Engaged Art', 'Social Center', 'Athens', 'Transfeminist', 'Queer', 'DIY', 'Makerspace', 'Collective', 'Anti-Capitalist', 'Radical Creativity', 'Collaboration', 'Resistance'],
         projectUrl: ''
     },
 };
