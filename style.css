@@ -892,8 +892,7 @@ button {
   box-shadow: none;
 }
 
-.research-page .research-sidebar ul,
-.platforms-page .platform-sidebar ul {
+.research-page .research-sidebar ul {
   padding: 0;
   list-style: none;
 }
@@ -983,8 +982,7 @@ button {
   border-left: 3px solid var(--rust);
 }
 
-.research-page .menu-toggle,
-.platforms-page .menu-toggle {
+.research-page .menu-toggle {
   display: none;
   width: 100%;
   margin: 0 0 1.5rem;
@@ -1042,53 +1040,40 @@ button {
 }
 
 .platforms-page .container {
-  display: grid;
-  grid-template-columns: minmax(10rem, 12rem) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4rem);
-  max-width: 1200px;
+  display: block;
+  max-width: 1040px;
   margin: 0 auto;
   padding: clamp(2.5rem, 5vw, 5rem) clamp(1.5rem, 4vw, 4rem) 6rem;
 }
 
-.platforms-page .platform-sidebar {
-  position: sticky;
-  top: 1.5rem;
-  align-self: start;
-  width: auto;
-  padding: 1rem 0 0;
-  background: transparent;
+.platforms-page .platform-list-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: end;
+  margin: 0 0 1.25rem;
+  padding: 1rem 0 1.25rem;
   border-top: 1px solid var(--ink);
-  border-radius: 0;
-  box-shadow: none;
+  border-bottom: 1px solid var(--line);
 }
 
-.platforms-page .platform-sidebar h2 {
-  margin: 0 0 0.9rem;
-  font-family: "Inter", Arial, sans-serif;
-  font-size: 1.45rem;
-  font-weight: 500;
-}
-
-.platforms-page .platform-sidebar ul li {
+.platforms-page .platform-list-note {
   margin: 0;
-  border-bottom: 1px solid var(--soft-line);
-}
-
-.platforms-page .platform-sidebar ul li a {
-  display: block;
-  padding: 0.65rem 0;
   color: var(--ink);
-  font-size: 0.92rem;
-  font-weight: 500;
-  text-decoration: none;
+  font-size: 0.88rem;
 }
 
-.platforms-page .platform-sidebar ul li a:hover,
-.platforms-page .platform-sidebar ul li a.active {
+.platforms-page .platform-list-note span {
+  margin-right: 0.45rem;
   color: var(--rust);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .platforms-page .content {
+  display: grid;
+  gap: 0.75rem;
   min-width: 0;
   margin-left: 0;
   counter-reset: platform-row;
@@ -1096,8 +1081,14 @@ button {
 
 .platforms-page .content section {
   padding: 0;
-  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid var(--line);
+  scroll-margin-top: 1.5rem;
   counter-increment: platform-row;
+}
+
+.platforms-page .content section:nth-child(even) {
+  background: var(--paper-deep);
 }
 
 .platforms-page .platform-accordion {
@@ -1111,23 +1102,58 @@ button {
 
 .platforms-page .platform-accordion-header {
   display: grid;
-  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
-  gap: 1rem;
+  grid-template-columns: 3rem minmax(0, 1fr) 2.6rem;
+  gap: 1.15rem;
   align-items: center;
-  padding: 1.15rem 1rem;
+  width: 100%;
+  min-height: 6rem;
+  margin: 0;
+  padding: 1.1rem 1.25rem;
   color: var(--ink);
-  background: var(--paper-deep);
-  border-left: 3px solid transparent;
-  font-weight: 500;
-  transition: background-color 160ms ease, border-color 160ms ease;
+  background: transparent;
+  border: 0;
+  border-left: 4px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
 }
 
 .platforms-page .platform-accordion-header::before {
   content: counter(platform-row, decimal-leading-zero);
   color: var(--rust);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 500;
   letter-spacing: 0.06em;
+}
+
+.platforms-page .platform-heading-text,
+.platforms-page .platform-name,
+.platforms-page .platform-scope {
+  display: block;
+  min-width: 0;
+}
+
+.platforms-page .platform-name {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.platforms-page .platform-scope {
+  margin-top: 0.45rem;
+  color: var(--plum);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.055em;
+  line-height: 1.35;
+  text-transform: uppercase;
 }
 
 .platforms-page .platform-accordion-header:hover {
@@ -1136,17 +1162,40 @@ button {
 }
 
 .platforms-page .platform-accordion-header .icon {
+  display: grid;
+  width: 2.6rem;
+  height: 2.6rem;
+  place-items: center;
   color: var(--plum);
+  border: 1px solid var(--ink);
   font-family: var(--font-mono);
   font-size: 1rem;
   font-weight: 500;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.platforms-page .platform-accordion-header:hover .icon,
+.platforms-page .platform-accordion-header[aria-expanded="true"] .icon {
+  color: var(--paper);
+  background: var(--plum);
+  border-color: var(--plum);
+}
+
+.platforms-page .platform-accordion-header[aria-expanded="true"] {
+  background: #ece6db;
+  border-left-color: var(--rust);
+}
+
+.platforms-page .platform-accordion-header[aria-expanded="true"] .platform-name {
+  color: var(--plum);
 }
 
 .platforms-page .platform-accordion-content {
   display: none;
-  padding: 1.4rem 1.5rem 1.7rem;
-  background: rgba(255, 255, 255, 0.5);
-  border-left: 3px solid var(--rust);
+  padding: 1.5rem clamp(1.25rem, 6vw, 4.75rem) 2rem;
+  background: rgba(255, 255, 255, 0.65);
+  border-top: 1px solid var(--line);
+  border-left: 4px solid var(--rust);
 }
 
 .platforms-page .platform-accordion-content p + p {
@@ -1217,20 +1266,17 @@ button {
     padding: 2.5rem 1.5rem 4rem;
   }
 
-  .research-page .research-sidebar,
-  .platforms-page .platform-sidebar {
+  .research-page .research-sidebar {
     position: relative;
     top: 0;
     display: none;
   }
 
-  .research-page .menu-toggle,
-  .platforms-page .menu-toggle {
+  .research-page .menu-toggle {
     display: block;
   }
 
-  .research-page .content section:first-child,
-  .platforms-page .content section:first-child {
+  .research-page .content section:first-child {
     margin-top: 2.5rem;
   }
 
@@ -1253,10 +1299,36 @@ button {
     margin-left: 0;
   }
 
+  .platforms-page .platform-list-heading {
+    display: block;
+  }
+
+  .platforms-page .platform-list-note {
+    margin-top: 0.75rem;
+  }
+
   .platforms-page .platform-accordion-header {
-    grid-template-columns: 2rem minmax(0, 1fr) auto;
-    gap: 0.65rem;
-    padding: 1rem 0.75rem;
+    grid-template-columns: 2rem minmax(0, 1fr) 2.3rem;
+    gap: 0.7rem;
+    min-height: 5.5rem;
+    padding: 1rem 0.85rem;
+  }
+
+  .platforms-page .platform-name {
+    font-size: 1.08rem;
+  }
+
+  .platforms-page .platform-scope {
+    font-size: 0.62rem;
+  }
+
+  .platforms-page .platform-accordion-header .icon {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+
+  .platforms-page .platform-accordion-content {
+    padding: 1.25rem 1.25rem 1.6rem;
   }
 
   .about-page .about-page-header {
