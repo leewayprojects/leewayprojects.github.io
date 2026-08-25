@@ -1225,6 +1225,13 @@ button {
   box-shadow: 6px 6px 0 var(--paper-deep), 7px 7px 0 var(--rust);
 }
 
+.platforms-page .platform-archive--portrait .platform-archive-link,
+.platforms-page .platform-archive--portrait figcaption {
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .platforms-page .platform-archive figcaption {
   display: flex;
   gap: 1rem;
