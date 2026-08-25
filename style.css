@@ -245,7 +245,9 @@ main {
   font-weight: 500;
   letter-spacing: -0.055em;
   line-height: 0.92;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: none;
 }
 
 .filter-count {
@@ -445,6 +447,12 @@ main {
   .project-filter-active .active-project-filter {
     display: block;
     padding: 2.75rem 1.5rem 2.25rem;
+  }
+
+  .filter-title {
+    max-width: 100%;
+    font-size: clamp(1.9rem, 9vw, 3rem);
+    line-height: 0.95;
   }
 
   .project-filter-active .clear-filter {
