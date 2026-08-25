@@ -1,105 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Toots</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css" />
-  <script src="/script.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dancing with Toots Benedicta | Leeway Projects</title>
+    <meta name="description" content="Dancing With Toots Benedicta is a three-track experimental music EP and a sonic meditation on longing, belonging and dispossession, woven with themes of…" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="project-style.css" />
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <!-- Optional: Add more formats for better compatibility -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-</head>
-<body class="project-page">
-  <!-- Sidebar navigation -->
-  <aside class="sidebar">
-    <header>
-      <a href="/">
-      <img src="/assets/images/Logo_white_crop.png" alt="Leeway Projects" class="sidebar-logo"/>
-      </a>
-    </header>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <script src="/script.js" defer></script>
+  </head>
 
-    <nav aria-label="Primary">
-      <ul class="nav">
-        <li><a href="/index.html">Projects</a></li>
-        <li><a href="/research.html">Research</a></li>
-        <li><a href="/platforms.html">Platforms</a></li>
-        <li><a href="/about.html">About</a></li>
-      </ul>
-    </nav>
+  <body class="project-page">
+    <aside class="sidebar">
+      <header>
+        <a href="/" aria-label="Leeway Projects home">
+          <img
+            src="/assets/images/Logo_white_crop.png"
+            alt="Leeway Projects"
+            class="sidebar-logo"
+          />
+        </a>
+      </header>
 
-    <footer class="sidebar-footer">
-      <a href="mailto:LeewayProjects@proton.me">Contact</a>
-      <p>© 2025 Leeway Projects — Designed and developed in-house</p>
-    </footer>
-  </aside>
+      <nav aria-label="Primary">
+        <ul class="nav">
+          <li><a href="/index.html" aria-current="page">Projects</a></li>
+          <li><a href="/research.html">Research</a></li>
+          <li><a href="/platforms.html">Platforms</a></li>
+          <li><a href="/about.html">About</a></li>
+        </ul>
+      </nav>
 
+      <footer class="sidebar-footer">
+        <a href="mailto:LeewayProjects@proton.me">Contact</a>
+        <p>© 2025 Leeway Projects — Designed and developed in-house</p>
+      </footer>
+    </aside>
 
-</head>
-    <!-- Main Content -->
-    <section class="grid">
-        <!-- Project Card 1-->
-        <div class="grid-item" onclick="openDrawer('toots')">
-            <img src="/assets/images/projects/DWTB.png" alt="EqPay4all project preview" />
-            <div class="overlay">
-                <h2>Dancing with Toots Benedicta</h2>
-                <p><span id="dots">...</span><span id="more" style="display:none;"></span></p>
-                    <button id="myBtn" onclick="toggleReadMore()">Read more</button></p>
+    <main class="grid" id="main-content">
+      <article class="grid-item project-hero" data-project-id="toots">
+        <figure class="project-visual">
+          <img
+            src="/assets/images/projects/DWTB.png"
+            alt="Dancing with Toots Benedicta project image"
+          />
+          <figcaption>TOOTS / AUDIO RELEASE / 2022</figcaption>
+        </figure>
+
+        <div class="overlay project-summary">
+          <div class="project-summary-inner">
+            <div class="project-heading">
+              <p class="project-kicker">LEW—PRJ / ARCHIVE</p>
+              <h1>Dancing with Toots Benedicta</h1>
             </div>
+
+            <div class="project-introduction">
+              <p><i><b>Dancing With Toots Benedicta</b></i> is a three-track experimental music EP and a sonic meditation on longing, belonging and dispossession, woven with themes of love, loss and grief.</p>
+              <button
+                class="project-details-trigger"
+                type="button"
+                data-project-open="toots"
+                aria-haspopup="dialog"
+                aria-controls="project-drawer"
+                aria-expanded="false"
+              >
+                View project details <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
         </div>
-    </section>
+      </article>
+    </main>
 
-    <!-- Drawer -->
-    <div class="drawer-backdrop" onclick="closeDrawer()"></div>
-    <div class="drawer" id="project-drawer">
-        <div class="drawer-content">
-            <div class="drawer-header">
-                <h2 class="drawer-title" id="drawer-title">Project Title</h2>
-                <button class="close-btn" onclick="closeDrawer()">&times;</button>
-            </div>
-            
-          
-            
-            <div class="drawer-description" id="drawer-description">
-                <!-- Project description will be inserted here -->
-            </div>
-            
-            <div class="project-details">
-                <div class="detail-item">
-                    <div class="detail-label">Role</div>
-                    <div class="detail-value" id="project-role">Composer</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">When</div>
-                    <div class="detail-value" id="project-when">2022</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Duration</div>
-                    <div class="detail-value" id="project-duration">12 months</div>
-                </div>
-                <div class="detail-item">
-                    <div class="detail-label">Funder</div>
-                    <div class="detail-value" id="project-funder">Arts Council England</div>
-                </div>
+    <div class="drawer-backdrop" data-drawer-close></div>
 
-            </div>
-            
-            <div class="tags" id="project-tags">
-                Experimental', 'Algorithmic Composition', 'Decolonial', 'South Asian Diaspora'
-            </div>
-            
-            <div class="action-buttons">
-                <a href="#" class="btn btn-primary" id="view-project-btn">View Project</a>
-               
-            </div>
+    <aside
+      class="drawer"
+      id="project-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="drawer-title"
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <div class="drawer-content">
+        <header class="drawer-header">
+          <div>
+            <p class="drawer-kicker">LEW—PRJ / PROJECT DETAILS</p>
+            <h2 class="drawer-title" id="drawer-title">Dancing with Toots Benedicta</h2>
+          </div>
+          <button class="close-btn" type="button" data-drawer-close aria-label="Close project details">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+
+        <div class="drawer-description" id="drawer-description">
+          <!-- Project description inserted by script.js -->
         </div>
-    </div>
 
-</body>
+        <div class="project-details">
+          <div class="detail-item">
+            <div class="detail-label">Status</div>
+            <div class="detail-value" id="project-status">Completed</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Role</div>
+            <div class="detail-value" id="project-role">Composer</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Funder</div>
+            <div class="detail-value" id="project-funder">Arts Council England</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">When</div>
+            <div class="detail-value" id="project-when">2022</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Duration</div>
+            <div class="detail-value" id="project-duration">12 months</div>
+          </div>
+        </div>
+
+        <div class="tags" id="project-tags" aria-label="Project tags">
+          <!-- Filter links inserted by script.js -->
+        </div>
+        <div class="action-buttons">
+          <a class="btn btn-primary" id="view-project-btn" href="#">Visit project <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </aside>
+
+    <button class="scroll-to-top" type="button" aria-label="Scroll to top"></button>
+  </body>
 </html>
