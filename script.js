@@ -343,7 +343,14 @@ function getFilterIndicator() {
     indicator.id = 'active-project-filter';
     indicator.className = 'active-project-filter';
     indicator.hidden = true;
-    indicator.innerHTML = '<span aria-live="polite"></span><a class="clear-filter" href="/index.html">Clear filter</a>';
+    indicator.innerHTML = `
+        <div class="filter-heading">
+            <p class="filter-kicker">LEW—PROJECT INDEX / ACTIVE FILTER</p>
+            <h1 class="filter-title"></h1>
+            <p class="filter-count" aria-live="polite"></p>
+        </div>
+        <a class="clear-filter" href="/index.html">View all projects <span aria-hidden="true">→</span></a>
+    `;
     grid.before(indicator);
     return indicator;
 }
@@ -363,6 +370,8 @@ function applyProjectFilter(tag) {
     const cards = document.querySelectorAll('.grid-item');
     let matchCount = 0;
 
+    document.body.classList.add('project-filter-active');
+
     cards.forEach(card => {
         const projectId = getCardProjectId(card);
         const projectTags = projectData[projectId]?.tags || [];
@@ -373,7 +382,8 @@ function applyProjectFilter(tag) {
 
     const indicator = getFilterIndicator();
     if (indicator) {
-        indicator.querySelector('span').textContent = `Filtering by “${tag}”`;
+        indicator.querySelector('.filter-title').textContent = tag;
+        indicator.querySelector('.filter-count').textContent = `${matchCount} ${matchCount === 1 ? 'project' : 'projects'}`;
         indicator.hidden = false;
     }
 
@@ -395,15 +405,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (projectId) card.dataset.projectId = projectId;
     });
 
-document.querySelectorAll('[data-project-open]').forEach(trigger => {
-    trigger.addEventListener('click', () => {
-        openDrawer(trigger.dataset.projectOpen);
+    document.querySelectorAll('[data-project-open]').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            openDrawer(trigger.dataset.projectOpen);
+        });
     });
-});
 
-document.querySelectorAll('[data-drawer-close]').forEach(trigger => {
-    trigger.addEventListener('click', closeDrawer);
-});    
+    document.querySelectorAll('[data-drawer-close]').forEach(trigger => {
+        trigger.addEventListener('click', closeDrawer);
+    });
 
     const isProjectListingPage = Boolean(document.querySelector('main > .grid'));
     const selectedTag = new URLSearchParams(window.location.search).get('tag');
@@ -412,9 +422,16 @@ document.querySelectorAll('[data-drawer-close]').forEach(trigger => {
     }
 });
 
+let lastDrawerTrigger = null;
+
 function openDrawer(projectId) {
     const project = projectData[projectId];
     if (!project) return;
+
+    const drawer = document.getElementById('project-drawer');
+    if (!drawer) return;
+
+    lastDrawerTrigger = document.activeElement;
 
     // Populate drawer content
     document.getElementById('drawer-title').textContent = project.title;
@@ -490,63 +507,56 @@ function openDrawer(projectId) {
 
     // Populate tags
     const tagsContainer = document.getElementById('project-tags');
-
     if (tagsContainer) {
         tagsContainer.innerHTML = '';
-
         (project.tags || []).forEach(tag => {
             const tagElement = document.createElement('a');
             tagElement.href = getProjectListingUrl(tag);
             tagElement.className = 'tag';
             tagElement.textContent = tag;
-            tagElement.setAttribute(
-                'aria-label',
-                `Filter projects by ${tag}`
-            );
+            tagElement.setAttribute('aria-label', `Filter projects by ${tag}`);
             tagElement.addEventListener('click', closeDrawer);
             tagsContainer.appendChild(tagElement);
         });
     }
 
     // Show drawer
-    const drawer = document.getElementById('project-drawer');
-
     document.querySelector('.drawer-backdrop')?.classList.add('show');
-    drawer?.classList.add('open');
-    drawer?.setAttribute('aria-hidden', 'false');
-
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
     document.querySelectorAll('[data-project-open]').forEach(trigger => {
         trigger.setAttribute('aria-expanded', 'true');
     });
-
     document.body.style.overflow = 'hidden';
-    drawer?.querySelector('.close-btn')?.focus();
+    drawer.querySelector('.close-btn')?.focus();
 }
 
 function closeDrawer() {
     const drawer = document.getElementById('project-drawer');
+    if (!drawer?.classList.contains('open')) return;
 
     document.querySelector('.drawer-backdrop')?.classList.remove('show');
-    drawer?.classList.remove('open');
-    drawer?.setAttribute('aria-hidden', 'true');
-
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
     document.querySelectorAll('[data-project-open]').forEach(trigger => {
         trigger.setAttribute('aria-expanded', 'false');
     });
-
     document.body.style.overflow = '';
+
+    if (lastDrawerTrigger instanceof HTMLElement) {
+        lastDrawerTrigger.focus();
+    }
 }
 
-// Close drawer with the Escape key
-document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
+// Close drawer on escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
         closeDrawer();
     }
-});
+} );
 
 
-// readmore button //
-// Legacy read-more control
+// Legacy read-more control used on project pages not yet moved to the new template.
 function toggleReadMore() {
     const dots = document.getElementById('dots');
     const moreText = document.getElementById('more');
@@ -568,30 +578,30 @@ function toggleReadMore() {
 }
 
 // Scroll-to-top button
-document.addEventListener('DOMContentLoaded', () => {
-    const scrollButton = document.querySelector('.scroll-to-top');
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollButton = document.querySelector(".scroll-to-top");
 
-    if (!scrollButton) return;
+  if (!scrollButton) return;
 
-    const updateScrollButton = () => {
-        scrollButton.style.display =
-            window.scrollY > 300 ? 'block' : 'none';
-    };
+  const updateScrollButton = () => {
+    scrollButton.style.display =
+      window.scrollY > 300 ? "block" : "none";
+  };
 
-    scrollButton.addEventListener('click', () => {
-        const reducedMotion = window.matchMedia(
-            '(prefers-reduced-motion: reduce)'
-        ).matches;
+  scrollButton.addEventListener("click", () => {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
-        window.scrollTo({
-            top: 0,
-            behavior: reducedMotion ? 'auto' : 'smooth'
-        });
+    window.scrollTo({
+      top: 0,
+      behavior: reducedMotion ? "auto" : "smooth"
     });
+  });
 
-    window.addEventListener('scroll', updateScrollButton, {
-        passive: true
-    });
+  window.addEventListener("scroll", updateScrollButton, {
+    passive: true
+  });
 
-    updateScrollButton();
+  updateScrollButton();
 });

@@ -194,6 +194,185 @@ main {
   display: none;
 }
 
+/* Filtered project index — editorial treatment shared with project pages */
+.project-filter-active main {
+  min-height: 100vh;
+  padding-bottom: clamp(3rem, 6vw, 6rem);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.project-filter-active .active-project-filter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  margin: 0;
+  padding: clamp(2.75rem, 6vw, 6rem) var(--page-gutter) clamp(2.25rem, 4vw, 4rem);
+  color: var(--ink);
+  background:
+    linear-gradient(to right, transparent calc(100% - 1px), rgba(17, 17, 15, 0.07) 1px)
+      0 0 / min(18vw, 220px) 100%,
+    var(--paper);
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+}
+
+.project-filter-active .active-project-filter[hidden] {
+  display: none;
+}
+
+.filter-heading {
+  min-width: 0;
+}
+
+.filter-kicker {
+  margin: 0;
+  color: var(--rust);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.075em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.filter-title {
+  max-width: 13ch;
+  margin: 0.75rem 0 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: clamp(3rem, 5.3vw, 5.75rem);
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+  overflow-wrap: anywhere;
+}
+
+.filter-count {
+  margin: 1rem 0 0;
+  color: var(--rust);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project-filter-active .clear-filter {
+  display: inline-flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin: 0;
+  padding: 0.35rem 0 0.3rem;
+  color: var(--plum);
+  border-bottom: 1px solid currentColor;
+  font-weight: 500;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: color 160ms ease, gap 160ms ease;
+}
+
+.project-filter-active .clear-filter:hover {
+  gap: 1.1rem;
+  color: var(--rust);
+}
+
+.project-filter-active .clear-filter:focus-visible,
+.project-filter-active .grid-item:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 4px;
+}
+
+.project-filter-active .grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+  gap: clamp(2.75rem, 5vw, 5rem) clamp(1.5rem, 3.5vw, 3.5rem);
+  padding: clamp(2.5rem, 5vw, 5rem) var(--page-gutter) 0;
+  counter-reset: filtered-project;
+}
+
+.project-filter-active .grid-item:not([hidden]) {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  aspect-ratio: auto;
+  overflow: visible;
+  color: var(--ink);
+  background: transparent;
+  border-top: 1px solid var(--ink);
+  border-radius: 0;
+  box-shadow: none;
+  text-decoration: none;
+  counter-increment: filtered-project;
+}
+
+.project-filter-active .grid-item img,
+.project-filter-active .grid-item img.top-aligned {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-bottom: 1px solid var(--ink);
+  transform: none;
+  transition: filter 220ms ease !important;
+}
+
+.project-filter-active .grid-item:hover img {
+  filter: saturate(0.82) contrast(1.04);
+  transform: none;
+}
+
+.project-filter-active .overlay,
+.project-filter-active .grid-item:hover .overlay {
+  position: static;
+  inset: auto;
+  display: block;
+  padding: 1rem 0 0;
+  color: var(--ink);
+  background: transparent;
+  opacity: 1;
+  text-align: left;
+}
+
+.project-filter-active .overlay::before {
+  content: "LEW—PRJ / " counter(filtered-project, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--rust);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.075em;
+}
+
+.project-filter-active .overlay h2 {
+  margin: 0 0 0.7rem;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: clamp(1.55rem, 2.2vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.project-filter-active .overlay p {
+  max-width: 58ch;
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.62;
+  opacity: 1;
+}
+
+.project-filter-active .project-filter-empty {
+  margin: clamp(2.5rem, 5vw, 5rem) var(--page-gutter) 0;
+  padding: 1.25rem 0;
+  color: var(--ink);
+  background: transparent;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+}
+
 .grid-item img {
   width: 100%;
   height: 100%;
@@ -261,6 +440,25 @@ main {
     main {
     margin-left: 0;
     width: 100%;
+  }
+
+  .project-filter-active .active-project-filter {
+    display: block;
+    padding: 2.75rem 1.5rem 2.25rem;
+  }
+
+  .project-filter-active .clear-filter {
+    margin-top: 2rem;
+  }
+
+  .project-filter-active .grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 2.5rem 1.5rem 0;
+  }
+
+  .project-filter-active .project-filter-empty {
+    margin: 2.5rem 1.5rem 0;
   }
 }
 
@@ -1071,6 +1269,11 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .project-filter-active .clear-filter,
+  .project-filter-active .grid-item img {
+    transition: none !important;
+  }
+
   .research-page main a,
   .platforms-page main a,
   .about-page main a,
